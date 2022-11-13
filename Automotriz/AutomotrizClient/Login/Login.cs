@@ -1,10 +1,11 @@
-using Aplicacion.Datos;
+using AutomotrizClient;
+using Libreria.Datos;
 
-namespace AutomotrizClient
+namespace Automotriz
 {
     public partial class Login : Form
     {
-        SQLControl sqlControl = new SQLControl();
+        HelperDB oConexion = new HelperDB();
         public Login()
         {
             InitializeComponent();
@@ -17,21 +18,18 @@ namespace AutomotrizClient
 
         private void btnOk_Click(object sender, EventArgs e)
         {
-            int result = sqlControl.Login(txtUsuario.Text, txtContraseña.Text);
+            int result = HelperDB.Login(txtUsuario.Text, txtContraseña.Text);
+
             if (result == 1)
             {
                 Menu menu = new Menu();
                 this.Hide();
                 menu.ShowDialog();
-            }else if (result == 0)
+            }
+            else if (result == 0)
             {
                 MessageBox.Show("¡¡Usuario o contraseña incorrecta!!");
             }
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void button1_Click(object sender, EventArgs e)

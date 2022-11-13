@@ -14,4 +14,8 @@
     <Folder Include="Productos\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Libreria\Libreria.csproj" />
+  </ItemGroup>
+
 </Project>

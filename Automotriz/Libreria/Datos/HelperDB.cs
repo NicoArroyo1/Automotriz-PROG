@@ -18,6 +18,35 @@ namespace Libreria.Datos
             cnn = new SqlConnection(Properties.Resources.CnnString1);
         }
 
+        public int Login(string usario, string pass)
+        {
+            try
+            {
+                cnn.Open();
+                SqlCommand cmd = new SqlCommand("pa_login", cnn);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@usuario", usario);
+                cmd.Parameters.AddWithValue("@pass", pass);
+
+                SqlDataReader dr = cmd.ExecuteReader();
+                
+                if (dr.Read())
+                {
+                    return dr.GetInt32(0);
+                }
+            }
+            catch (Exception)
+            {
+                return -1;
+            }
+            finally
+            {
+                cnn.Close();
+            }
+            return -1;
+        }
+
         public DataTable EjecutarSP(string nom_sp)
         {
             DataTable dt = new DataTable();
@@ -35,7 +64,7 @@ namespace Libreria.Datos
         {
             List<Modelo> lst = new List<Modelo>();
 
-            DataTable t = EjecutarSP("pa_modelos_todos");
+            DataTable t = EjecutarSP("pa_modelos");
 
             foreach (DataRow dr in t.Rows)
             {
