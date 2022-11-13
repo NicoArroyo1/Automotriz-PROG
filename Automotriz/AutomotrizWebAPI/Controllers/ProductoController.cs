@@ -1,5 +1,5 @@
-﻿using Aplicacion.Datos;
-using Aplicacion.Dominio;
+﻿using Libreria.Dominio;
+using Libreria.Datos;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,11 +9,11 @@ namespace AutomotrizWebAPI.Controllers
     [ApiController]
     public class ProductoController : Controller
     {
-        private SQLControl oConexion;
+        private HelperDB oConexion;
 
         public ProductoController()
         {
-            oConexion = new SQLControl();
+            oConexion = new HelperDB();
         }
 
         [HttpGet("/modelos")]

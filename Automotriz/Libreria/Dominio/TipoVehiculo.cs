@@ -5,7 +5,7 @@ using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Aplicacion.Dominio
+namespace Libreria.Dominio
 {
     public class TipoVehiculo
     {
