@@ -1,5 +1,5 @@
-﻿using Aplicacion.Datos;
-using Aplicacion.Dominio;
+﻿using Libreria.Datos;
+using Libreria.Dominio;
 using AutomotrizClient.Http;
 using Newtonsoft.Json;
 using System;
@@ -18,7 +18,7 @@ namespace AutomotrizClient
 {
     public partial class Autopartes : Form
     {
-        SQLControl data = new SQLControl();
+        HelperDB data = new HelperDB();
 
         public Autopartes()
         {
@@ -69,7 +69,7 @@ namespace AutomotrizClient
             cboVehiculos.SelectedIndex = -1;
         }
 
-        private void cargarcomboModelos()
+        private void cargarcomboModelos() //hacer con web api
         {
             cboModelos.DataSource = data.ConsultarSQL("select * from modelos");
             cboModelos.ValueMember = "cod_modelo";
@@ -81,9 +81,11 @@ namespace AutomotrizClient
         {
             DataTable tabla;
             tabla = data.ConsultarSQL(query);
+
             foreach (DataRow fila in tabla.Rows)
             {
-                dataGridView1.Rows.Add(new object[] { fila["cod_producto"],
+                dataGridView1.Rows.Add(new object[] 
+                {   fila["cod_producto"],
                     fila["nro_serie"],
                     fila["cod_tipo_producto"],
                     fila["cod_modelo"],

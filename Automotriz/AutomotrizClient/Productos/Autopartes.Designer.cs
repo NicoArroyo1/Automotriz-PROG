@@ -165,6 +165,8 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.producto,
@@ -177,6 +179,7 @@
             this.fabricacion});
             this.dataGridView1.Location = new System.Drawing.Point(66, 195);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 25;
             this.dataGridView1.Size = new System.Drawing.Size(652, 150);
             this.dataGridView1.TabIndex = 9;
@@ -185,44 +188,52 @@
             // 
             this.producto.HeaderText = "Codigo";
             this.producto.Name = "producto";
+            this.producto.ReadOnly = true;
             // 
             // nro_serie
             // 
             this.nro_serie.HeaderText = "Numero Serie";
             this.nro_serie.Name = "nro_serie";
+            this.nro_serie.ReadOnly = true;
             // 
             // tipo_producto
             // 
             this.tipo_producto.HeaderText = "tipo_producto";
             this.tipo_producto.Name = "tipo_producto";
+            this.tipo_producto.ReadOnly = true;
             this.tipo_producto.Visible = false;
             // 
             // modelo
             // 
             this.modelo.HeaderText = "Modelo ";
             this.modelo.Name = "modelo";
+            this.modelo.ReadOnly = true;
             this.modelo.Visible = false;
             // 
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.HeaderText = "Color";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
             // 
             // tipo_vehiculo
             // 
             this.tipo_vehiculo.HeaderText = "Tipo Vehiculo";
             this.tipo_vehiculo.Name = "tipo_vehiculo";
+            this.tipo_vehiculo.ReadOnly = true;
             this.tipo_vehiculo.Visible = false;
             // 
             // precio2
             // 
             this.precio2.HeaderText = "Precio";
             this.precio2.Name = "precio2";
+            this.precio2.ReadOnly = true;
             // 
             // fabricacion
             // 
             this.fabricacion.HeaderText = "Fecha y hora de fabricacion";
             this.fabricacion.Name = "fabricacion";
+            this.fabricacion.ReadOnly = true;
             this.fabricacion.Width = 150;
             // 
             // checkTodos

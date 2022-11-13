@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutomotrizClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -39,9 +40,7 @@ namespace AutomotrizClient
 
         private void toolStripTextBox7_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            Consultas consultas = new Consultas();
-            consultas.Show();
+            
         }
 
         

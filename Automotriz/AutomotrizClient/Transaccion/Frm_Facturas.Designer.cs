@@ -1,5 +1,5 @@
 ﻿
-namespace CarpinteriaApp.formularios
+namespace AutomotrizClient
 {
     partial class Frm_Facturas
     {

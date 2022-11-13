@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "6Nx8bX2vwkBNolTO0/84H91k4IV+JHVzdsboOSXTShnGZdtZR7kAdZ1SPSkfui6jVv5vt1wRfabiXFE6gKtv2g==",
+  "dgSpecHash": "9X+SK3BsWjSVHnyvi3vK5r6ukS6nVMAf6jzqwZyM44TAU9XhKr1MTkfNU2nCYY3r1xWjJaZowSQuJYypMxJHeg==",
   "success": true,
   "projectFilePath": "E:\\Biblioteca\\Escritorio\\GitHub\\Automotriz-PROG\\Automotriz\\AutomotrizClient\\AutomotrizClient.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\nicoo\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\nicoo\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
+    "C:\\Users\\nicoo\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
     "C:\\Users\\nicoo\\.nuget\\packages\\runtime.native.system.data.sqlclient.sni\\4.7.0\\runtime.native.system.data.sqlclient.sni.4.7.0.nupkg.sha512",
     "C:\\Users\\nicoo\\.nuget\\packages\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "C:\\Users\\nicoo\\.nuget\\packages\\runtime.win-x64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",

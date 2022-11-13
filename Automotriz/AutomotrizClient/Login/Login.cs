@@ -1,7 +1,7 @@
 using AutomotrizClient;
 using Libreria.Datos;
 
-namespace Automotriz
+namespace AutomotrizClient
 {
     public partial class Login : Form
     {
@@ -18,7 +18,7 @@ namespace Automotriz
 
         private void btnOk_Click(object sender, EventArgs e)
         {
-            int result = HelperDB.Login(txtUsuario.Text, txtContraseña.Text);
+            int result = oConexion.Login(txtUsuario.Text, txtContraseña.Text);
 
             if (result == 1)
             {

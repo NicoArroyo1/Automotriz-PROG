@@ -1,83 +1,67 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Libreria.Datos;
+using Libreria.Dominio;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AutomotrizWebAPI.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class FacturaController : Controller
     {
-        // GET: FacturaController
-        public ActionResult Index()
+        private HelperDB oConexion;
+
+        public FacturaController()
         {
-            return View();
+            oConexion = new HelperDB();
         }
 
-        // GET: FacturaController/Details/5
-        public ActionResult Details(int id)
+        [HttpGet("/")]
+        public IActionResult GetModelos()
         {
-            return View();
-        }
-
-        // GET: FacturaController/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: FacturaController/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
-        {
+            List<Modelo> lst = null;
             try
             {
-                return RedirectToAction(nameof(Index));
+                lst = oConexion.ObtenerModelos();
+                return Ok(lst);
             }
-            catch
+            catch (Exception)
             {
-                return View();
+                return StatusCode(500, "Error interno! Intente luego");
             }
         }
 
-        // GET: FacturaController/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
 
-        // POST: FacturaController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        [HttpGet("/tipos_vehiculos")]
+        public IActionResult GetTiposVehiculos()
         {
+            List<TipoVehiculo> lst = null;
             try
             {
-                return RedirectToAction(nameof(Index));
+                lst = oConexion.ObtenerTiposVehiculos();
+                return Ok(lst);
             }
-            catch
+            catch (Exception)
             {
-                return View();
+                return StatusCode(500, "Error interno! Intente luego");
             }
         }
 
-        // GET: FacturaController/Delete/5
-        public ActionResult Delete(int id)
+        [HttpGet("/autopartes")]
+        public IActionResult GetAutopartes()
         {
-            return View();
-        }
-
-        // POST: FacturaController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
+            List<Autoparte> lst = null;
             try
             {
-                return RedirectToAction(nameof(Index));
+                lst = oConexion.ObtenerAutopartes();
+                return Ok(lst);
             }
-            catch
+            catch (Exception)
             {
-                return View();
+                return StatusCode(500, "Error interno! Intente luego");
             }
         }
+
+
     }
 }

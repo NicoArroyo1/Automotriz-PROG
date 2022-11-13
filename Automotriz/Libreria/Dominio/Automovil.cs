@@ -8,13 +8,11 @@ namespace Libreria.Dominio
 {
     public class Automovil
     {
-        public string nroSerie { get; set; }
-        public int cod_tipo_producto { get; set; }
-        public int cod_modelo { get; set; }
-        public string color { get; set; }
-        public int cod_tipo_vehiculo { get; set; }
-        public int pre_unitario { get; set; }
-        public DateTime fecha_fabricacion { get; set; }
-        public int codigo { get; set; }
+        public int Patente { get; set; }
+        public int CodModelo { get; set; }
+        public int CodTipoVehiculo { get; set; }
+        public string Color { get; set; }
+        public double Precio { get; set; }
+        public DateTime FecFabricacion { get; set; }
     }
 }

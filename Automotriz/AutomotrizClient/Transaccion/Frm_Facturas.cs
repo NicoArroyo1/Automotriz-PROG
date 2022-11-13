@@ -1,5 +1,5 @@
-﻿using CarpinteriaApp.datos;
-using CarpinteriaApp.dominio;
+﻿using Libreria.Datos;
+using Libreria.Dominio;
 using System;
 using System.Data;
 using System.Data.SqlClient;
@@ -7,12 +7,13 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace CarpinteriaApp.formularios
+namespace AutomotrizClient
 {
     public partial class Frm_Facturas : Form
     {
         private HelperDB helper;
         private Factura nuevo;
+
         public Frm_Facturas()
         {
             InitializeComponent();
@@ -21,8 +22,6 @@ namespace CarpinteriaApp.formularios
             this.SetStyle(ControlStyles.ResizeRedraw, true);
             helper = new HelperDB();
             nuevo = new Factura();
-            
-
         }
 
         private const int cGrip = 16;      // Grip size
@@ -58,7 +57,6 @@ namespace CarpinteriaApp.formularios
 
         private void Frm_Facturas_Load_1(object sender, EventArgs e)
         {
-
             UltimaFactura();
             CargarClientes();
             CargarPlanes();
@@ -77,13 +75,11 @@ namespace CarpinteriaApp.formularios
             btnBuscar.Hide();
         }
 
-
         private void UltimaFactura()
         {
             int prox = helper.UltimaFactura();
             lblNroFactura.Text = "Nº Factura:   " + prox.ToString();
         }
-
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
