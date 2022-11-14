@@ -68,5 +68,14 @@ namespace Libreria.Properties {
                 return ResourceManager.GetString("ConexionString1", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Data Source=WS73116\SQLEXPRESS;Initial Catalog=AutomotrizDB_PROG;Integrated Security=True.
+        /// </summary>
+        internal static string ConexionString2 {
+            get {
+                return ResourceManager.GetString("ConexionString2", resourceCulture);
+            }
+        }
     }
 }

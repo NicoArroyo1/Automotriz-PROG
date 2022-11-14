@@ -15,7 +15,7 @@ namespace Libreria.Datos
 
         public HelperDB()
         {
-            cnn = new SqlConnection(Properties.Resources.ConexionString1);
+            cnn = new SqlConnection(Properties.Resources.ConexionString2);
         }
 
         public int Login(string usario, string pass)
@@ -104,11 +104,10 @@ namespace Libreria.Datos
 
             foreach (DataRow dr in t.Rows)
             {
-                int codigo = int.Parse(dr["cod_tipo_producto"].ToString());
-                string tipo = dr["descripcion"].ToString();
-
-                //Autoparte aux = new Autoparte(codigo, tipo);
-                //lst.Add(aux);
+                Autoparte aux = new Autoparte();
+                aux.NroSerie = int.Parse(dr["nro_serie"].ToString());
+                aux.Nombre = dr["autoparte"].ToString();
+                lst.Add(aux);
             }
 
             return lst;
@@ -130,6 +129,22 @@ namespace Libreria.Datos
             cnn.Close();
 
             return (int)pOut.Value;
+        }
+
+        public List<Autoplan> ObtenerAutoplanes()
+        {
+            List<Autoplan> lst = new List<Autoplan>();
+            DataTable dt = EjecutarSP("pa_autoplanes");
+
+            foreach (DataRow fila in dt.Rows)
+            {
+                Autoplan aux = new Autoplan();
+                aux.CodPlan = int.Parse(fila["cod_plan"].ToString());
+                aux.NomPlan = fila["nom_plan"].ToString();
+                lst.Add(aux);
+            }
+
+            return lst;
         }
     }
 }

@@ -121,4 +121,8 @@
     <value>Data Source=PC-NICO\SQLEXPRESS;Initial Catalog=AutomotrizDB_PROG;Integrated Security=True</value>
     <comment>casa nico</comment>
   </data>
+  <data name="ConexionString2" xml:space="preserve">
+    <value>Data Source=WS73116\SQLEXPRESS;Initial Catalog=AutomotrizDB_PROG;Integrated Security=True</value>
+    <comment>mds</comment>
+  </data>
 </root>

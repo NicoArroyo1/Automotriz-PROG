@@ -27,7 +27,7 @@ namespace AutomotrizClient
         }
 
         private const int cGrip = 16;      // Grip size
-        private const int cCaption = 32;   // Caption bar height;
+        private const int cCaption = 32;   // Caption bar height
 
         protected override void OnPaint(PaintEventArgs e)
         {

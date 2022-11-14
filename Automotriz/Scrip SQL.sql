@@ -66,12 +66,6 @@ descripcion varchar(25),
 constraint pk_tipos_clientes primary key (cod_tipo_cliente)
 )
 
-create table Tipos_producto(
-cod_tipo_producto int identity(1,1),
-descripcion varchar(100),
-constraint pk_tipos_productos primary key (cod_tipo_producto)
-)
-
 create table Facturas(
 cod_factura int identity(1,1),
 cod_empleado int,
@@ -126,11 +120,6 @@ insert into Empleados(nombre            ,cod_tipo_empleado)
                      ('Sofia Villanueva', 2),
 					 ('Diego Carrizo'   , 2),
 					 ('Fernando Rosso'  , 2)
-
--------------------------- INSERT TIPOS_PRODUCTOS --------------------------------------------
-INSERT INTO Tipos_producto (descripcion)
-					VALUES ('Autopartes'),
-						   ('Automoviles')
 
 -------------------------- INSERT MODELOS ----------------------------------------------------
 INSERT INTO Modelos (modelo)
@@ -233,7 +222,11 @@ begin
 	select nro_serie, autoparte from Autopartes
 end
 
-
+create procedure pa_autoplanes
+as
+begin
+	select cod_plan, nom_plan from Autoplanes
+end
 
 /*
 --SP PROXIMO ID
