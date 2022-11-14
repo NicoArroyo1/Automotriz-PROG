@@ -146,5 +146,18 @@ namespace Libreria.Datos
 
             return lst;
         }
+        
+        public List<Automovil> ObtenerAutomoviles()
+        {
+            List<Automovil> lst = new List<Automovil>();
+            DataTable dt = EjecutarSP("pa_automoviles");
+
+            foreach (DataRow fila in dt.Rows)
+            {
+                Automovil aux = new Automovil();
+                aux.Patente = int.Parse(fila["patente"].ToString());
+                
+            }
+        }
     }
 }
