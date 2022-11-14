@@ -71,14 +71,14 @@ namespace AutomotrizClient
 
         private void cargarcomboModelos() //hacer con web api
         {
-            cboModelos.DataSource = data.ConsultarSQL("select * from modelos");
+            cboModelos.DataSource = data.EjecutarSP("pa_modelos");
             cboModelos.ValueMember = "cod_modelo";
             cboModelos.DisplayMember = "modelo";
             cboModelos.SelectedIndex = -1;
         }
 
         private void llenar_grilla(string query)
-        {
+        {/*
             DataTable tabla;
             tabla = data.ConsultarSQL(query);
 
@@ -94,8 +94,9 @@ namespace AutomotrizClient
                     fila["pre_unitario"],
                     fila["fecha_fabricacion"]
                 });
-            }
+            }*/
         }
+
         private void validacion()
         {
 
@@ -143,7 +144,7 @@ namespace AutomotrizClient
         }
 
         private void button1_Click(object sender, EventArgs e)
-        {
+        {/*
 
             int nro = int.Parse(dataGridView1.CurrentRow.Cells["producto"].Value.ToString());
             data.EliminarSQL(nro);
@@ -151,7 +152,7 @@ namespace AutomotrizClient
             dataGridView1.Rows.Clear();
             inicio();
             limpiar();
-            LabelEdit.Visible = false;
+            LabelEdit.Visible = false;*/
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
@@ -172,7 +173,7 @@ namespace AutomotrizClient
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
-        {
+        {/*
             validacion();
             Autoparte autoparte = new Autoparte();
             autoparte.nroSerie = txtNroSerie.Text;
@@ -186,7 +187,7 @@ namespace AutomotrizClient
             MessageBox.Show("Se guardo correctamente");
             dataGridView1.Rows.Clear();
             inicio();
-            limpiar();
+            limpiar();*/
         }
         private void btnEditar_Click(object sender, EventArgs e)
         {
@@ -206,7 +207,7 @@ namespace AutomotrizClient
             btnNuevo.Enabled = false;
         }
         private void btnGuardarEdit_Click(object sender, EventArgs e)
-        {
+        {/*
             validacion();
             Autoparte autoparte = new Autoparte();
             int nro = int.Parse(dataGridView1.CurrentRow.Cells["producto"].Value.ToString());
@@ -223,7 +224,7 @@ namespace AutomotrizClient
             dataGridView1.Rows.Clear();
             inicio();
             limpiar();
-            LabelEdit.Visible = false;
+            LabelEdit.Visible = false;*/
         }
 
         private void cboVehiculos_SelectedIndexChanged(object sender, EventArgs e)

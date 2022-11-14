@@ -23,28 +23,6 @@ namespace AutomotrizClient
 
         }
 
-        private void toolStripTextBox3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void toolStripMenuItem3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void toolStripMenuItem4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void toolStripTextBox7_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        
-
         private void toolStripTextBox9_Click_1(object sender, EventArgs e)
         {
             this.Close();
@@ -54,6 +32,12 @@ namespace AutomotrizClient
         {
             Autopartes frmAutop = new Autopartes();
             frmAutop.ShowDialog();
+        }
+
+        private void ventaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmFacturas frmFact = new FrmFacturas();
+            frmFact.ShowDialog();
         }
     }
 }

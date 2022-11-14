@@ -77,17 +77,6 @@ namespace AutomotrizWebAPI.Controllers
             }
         }
         */
-        
-
-
-
-
-
-
-
-
-
-
 
     }
 }

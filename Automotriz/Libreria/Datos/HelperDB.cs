@@ -15,7 +15,7 @@ namespace Libreria.Datos
 
         public HelperDB()
         {
-            cnn = new SqlConnection(Properties.Resources.CnnString1);
+            cnn = new SqlConnection(Properties.Resources.ConexionString1);
         }
 
         public int Login(string usario, string pass)
@@ -112,6 +112,24 @@ namespace Libreria.Datos
             }
 
             return lst;
+        }
+
+        public int ObtenerProxFactura()
+        {
+            SqlCommand cmd = new SqlCommand();
+            cnn.Open();
+            cmd.Connection = cnn;
+            cmd.CommandText = "SP_PROXIMO_ID";
+            cmd.CommandType = CommandType.StoredProcedure;
+            SqlParameter pOut = new SqlParameter();
+            pOut.ParameterName = "@next";
+            pOut.DbType = DbType.Int32;
+            pOut.Direction = ParameterDirection.Output;
+            cmd.Parameters.Add(pOut);
+            cmd.ExecuteNonQuery();
+            cnn.Close();
+
+            return (int)pOut.Value;
         }
     }
 }

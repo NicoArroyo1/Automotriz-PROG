@@ -117,7 +117,8 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="CnnString1" xml:space="preserve">
-    <value />
+  <data name="ConexionString1" xml:space="preserve">
+    <value>Data Source=PC-NICO\SQLEXPRESS;Initial Catalog=AutomotrizDB_PROG;Integrated Security=True</value>
+    <comment>casa nico</comment>
   </data>
 </root>

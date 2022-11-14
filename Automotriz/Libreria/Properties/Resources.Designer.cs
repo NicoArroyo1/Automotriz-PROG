@@ -61,11 +61,11 @@ namespace Libreria.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a .
+        ///   Busca una cadena traducida similar a Data Source=PC-NICO\SQLEXPRESS;Initial Catalog=AutomotrizDB_PROG;Integrated Security=True.
         /// </summary>
-        internal static string CnnString1 {
+        internal static string ConexionString1 {
             get {
-                return ResourceManager.GetString("CnnString1", resourceCulture);
+                return ResourceManager.GetString("ConexionString1", resourceCulture);
             }
         }
     }

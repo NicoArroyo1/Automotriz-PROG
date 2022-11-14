@@ -61,14 +61,26 @@
   <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
     <value>177, 6</value>
   </data>
+  <data name="toolStripTextBox3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
   <data name="toolStripTextBox3.Text" xml:space="preserve">
     <value>Autos</value>
+  </data>
+  <data name="toolStripTextBox4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
   </data>
   <data name="toolStripTextBox4.Text" xml:space="preserve">
     <value>Autopartes</value>
   </data>
+  <data name="toolStripTextBox2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
   <data name="toolStripTextBox2.Text" xml:space="preserve">
     <value>Facturas</value>
+  </data>
+  <data name="toolStripTextBox10.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
   </data>
   <data name="toolStripTextBox10.Text" xml:space="preserve">
     <value>Personas</value>
@@ -79,11 +91,20 @@
   <data name="toolStripMenuItem5.Text" xml:space="preserve">
     <value>Informes</value>
   </data>
+  <data name="toolStripTextBox11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
   <data name="toolStripTextBox11.Text" xml:space="preserve">
     <value>Automovil</value>
   </data>
+  <data name="toolStripTextBox12.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
   <data name="toolStripTextBox12.Text" xml:space="preserve">
     <value>Autoparte</value>
+  </data>
+  <data name="toolStripTextBox13.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
   </data>
   <data name="toolStripTextBox13.Text" xml:space="preserve">
     <value>Persona</value>
@@ -93,6 +114,18 @@
   </data>
   <data name="toolStripTextBox1.Text" xml:space="preserve">
     <value>Alta</value>
+  </data>
+  <data name="ventaToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="ventaToolStripMenuItem.Text" xml:space="preserve">
+    <value>Venta</value>
+  </data>
+  <data name="transaccionToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="transaccionToolStripMenuItem.Text" xml:space="preserve">
+    <value>Transaccion</value>
   </data>
   <data name="toolStripTextBox7.Text" xml:space="preserve">
     <value>Salir</value>
@@ -105,9 +138,6 @@
   </data>
   <data name="toolStripTextBox14.Text" xml:space="preserve">
     <value>Alta de Usuario</value>
-  </data>
-  <data name="usuarioToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>160, 22</value>
   </data>
   <data name="usuarioToolStripMenuItem.Text" xml:space="preserve">
     <value>Usuario</value>

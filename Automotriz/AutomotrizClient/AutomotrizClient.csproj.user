@@ -10,7 +10,7 @@
     <Compile Update="Productos\Autopartes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Transaccion\Frm_Facturas.cs">
+    <Compile Update="Transaccion\FrmFacturas.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

@@ -1,5 +1,7 @@
-﻿using Libreria.Datos;
+﻿using AutomotrizClient.Http;
+using Libreria.Datos;
 using Libreria.Dominio;
+using Newtonsoft.Json;
 using System;
 using System.Data;
 using System.Data.SqlClient;
@@ -9,12 +11,12 @@ using System.Windows.Forms;
 
 namespace AutomotrizClient
 {
-    public partial class Frm_Facturas : Form
+    public partial class FrmFacturas : Form
     {
         private HelperDB helper;
         private Factura nuevo;
 
-        public Frm_Facturas()
+        public FrmFacturas()
         {
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.None;
@@ -57,11 +59,9 @@ namespace AutomotrizClient
 
         private void Frm_Facturas_Load_1(object sender, EventArgs e)
         {
-            UltimaFactura();
-            CargarClientes();
+            ProximaFactura();
             CargarPlanes();
-            CargarEmpleados();
-            CargarTipoProductos();
+            CargarEmpleados();/*
             txtFecha.Text = DateTime.Now.ToString("dd/MM/yyyy");
             cboClientes.SelectedIndex = -1;
             cbxEmpleado.SelectedIndex = -1;
@@ -72,14 +72,63 @@ namespace AutomotrizClient
             cboProductos.Enabled = false;
             txtNroFactura.Hide();
             dgvDetalles1.Hide();
-            btnBuscar.Hide();
+            btnBuscar.Hide();*/
         }
 
-        private void UltimaFactura()
+        private async void ProximaFactura()
         {
-            int prox = helper.UltimaFactura();
+            string url = "http://localhost:5046/proxima_factura";
+            var res = await ClientSingleton.GetInstance().GetAsync(url);
+            var prox = JsonConvert.DeserializeObject<int>(res);
             lblNroFactura.Text = "Nº Factura:   " + prox.ToString();
         }
+
+        private async void CargarAutopartes()
+        {
+            string url = "http://localhost:5046/autopartes";
+            var res = await ClientSingleton.GetInstance().GetAsync(url);
+            var lst = JsonConvert.DeserializeObject<List<Autoparte>>(res);
+            cboProductos.DataSource = lst;
+            cboProductos.ValueMember = "NroSerie";
+            cboProductos.DisplayMember = "Nombre";
+        }
+
+        private async void CargarAutomoviles()
+        {
+            string url = "http://localhost:5046/automoviles";
+            var res = await ClientSingleton.GetInstance().GetAsync(url);
+            var lst = JsonConvert.DeserializeObject<List<Automovil>>(res);
+            cboProductos.DataSource = lst;
+            cboProductos.ValueMember = "Patente";
+            cboProductos.DisplayMember = "Patente";
+        }
+
+        private async void CargarPlanes()
+        {
+            string url = "http://localhost:5046/autoplanes";
+            var res = await ClientSingleton.GetInstance().GetAsync(url);
+            var lst = JsonConvert.DeserializeObject<List<Autoplan>>(res);
+            cboProductos.DataSource = lst;
+            cboProductos.ValueMember = "CodPlan";
+            cboProductos.DisplayMember = "NomPlan";
+        }
+
+        private async void CargarEmpleados()
+        {
+            string url = "http://localhost:5046/empleados";
+            var res = await ClientSingleton.GetInstance().GetAsync(url);
+            var lst = JsonConvert.DeserializeObject<List<Empleado>>(res);
+            cboProductos.DataSource = lst;
+            cboProductos.ValueMember = "Legajo";
+            cboProductos.DisplayMember = "Nombre";
+        }
+
+
+
+
+
+
+
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
@@ -111,7 +160,7 @@ namespace AutomotrizClient
             int prod = Convert.ToInt32(item.Row.ItemArray[0]);
             string nom = item.Row.ItemArray[1].ToString();
             double pre = Convert.ToDouble(item.Row.ItemArray[5]);
-            Producto p = new Producto(prod, nom, pre);
+            //Producto p = new Producto(prod, nom, pre);
             int cantidad = Convert.ToInt32(txtCantidad.Text);
 
             DetalleFactura detalle = new DetalleFactura(p, cantidad);
@@ -122,74 +171,10 @@ namespace AutomotrizClient
             CalcularTotal();
         }
 
-        private void CargarAutopartes()
-        {
-            DataTable table = helper.ConsultaSQL("SP_CONSULTAR_AUTOPARTES");
-            if (table != null)
-            {
-                cboProductos.DataSource = table;
-                cboProductos.DisplayMember = "descripcion";
-                cboProductos.ValueMember = "cod_producto";
-            }
-        }
-
-        private void CargarAutomoviles()
-        {
-            DataTable table = helper.ConsultaSQL("SP_CONSULTAR_AUTOMOVILES");
-            if (table != null)
-            {
-                cboProductos.DataSource = table;
-                cboProductos.DisplayMember = "descripcion";
-                cboProductos.ValueMember = "cod_producto";
-            }
-        }
-
-        private void CargarClientes()
-        {
-            DataTable table = helper.ConsultaSQL("SP_CONSULTAR_CLIENTES");
-            if (table != null)
-            {
-                cboClientes.DataSource = table;
-                cboClientes.DisplayMember = "cliente";
-                cboClientes.ValueMember = "cod_cliente";
-            }
-        }
-
-        private void CargarPlanes()
-        {
-            DataTable table = helper.ConsultaSQL("SP_CONSULTAR_PLANES");
-            if (table != null)
-            {
-                cbxPlan.DataSource = table;
-                cbxPlan.DisplayMember = "nom_plan";
-                cbxPlan.ValueMember = "cod_plan";
-            }
-        }
-
-        private void CargarEmpleados()
-        {
-            DataTable table = helper.ConsultaSQL("SP_CONSULTAR_EMPLEADOS");
-            if (table != null)
-            {
-                cbxEmpleado.DataSource = table;
-                cbxEmpleado.DisplayMember = "empleado";
-                cbxEmpleado.ValueMember = "cod_empleado";
-            }
-        }
-
-        private void CargarTipoProductos()
-        {
-            DataTable table = helper.ConsultaSQL("SP_CONSULTAR_TIPOSPROD");
-            if (table != null)
-            {
-                cboTipoProducto.DataSource = table;
-                cboTipoProducto.DisplayMember = "descripcion";
-                cboTipoProducto.ValueMember = "cod_tipo_producto";
-            }
-        }
+        
 
         private void cboTipoProducto_SelectedIndexChanged(object sender, EventArgs e)
-        {
+        {/*
             cboProductos.Enabled = true;
             if (cboTipoProducto.SelectedIndex == 0)
             {
@@ -202,11 +187,11 @@ namespace AutomotrizClient
                 cbxPlan.SelectedIndex = -1;
                 cbxPlan.Enabled = true;
                 CargarAutomoviles();
-            }
+            }*/
         }
 
         private void GuardarFactura()
-        {
+        {/*
             nuevo.Cliente = cboClientes.SelectedIndex + 1;
             nuevo.Plan = cbxPlan.SelectedIndex + 1;
             nuevo.Empleado = cbxEmpleado.SelectedIndex + 1;
@@ -232,7 +217,7 @@ namespace AutomotrizClient
             {
                 nuevo.QuitarDetalle(0);
             }
-
+         */
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
@@ -288,7 +273,6 @@ namespace AutomotrizClient
 
         private void lblNuevo_Click(object sender, EventArgs e)
         {
-
             txtFecha.Text = DateTime.Now.ToString("dd/MM/yyyy");
             cboClientes.SelectedIndex = -1;
             cbxEmpleado.SelectedIndex = -1;
@@ -304,7 +288,7 @@ namespace AutomotrizClient
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
-        {
+        {/*
 
             cboClientes.SelectedIndex = -1;
             cbxEmpleado.SelectedIndex = -1;
@@ -335,7 +319,8 @@ namespace AutomotrizClient
             {
                 dgvDetalles1.DataSource = table;
             }
-
+        */
         }
+
     }
 }

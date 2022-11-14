@@ -16,14 +16,14 @@ namespace AutomotrizWebAPI.Controllers
             oConexion = new HelperDB();
         }
 
-        [HttpGet("/")]
-        public IActionResult GetModelos()
+        [HttpGet("/proxima_factura")]
+        public IActionResult GetProxFactura()
         {
-            List<Modelo> lst = null;
+            int prox = 0;
             try
             {
-                lst = oConexion.ObtenerModelos();
-                return Ok(lst);
+                prox = oConexion.ObtenerProxFactura();
+                return Ok(prox);
             }
             catch (Exception)
             {
@@ -31,7 +31,7 @@ namespace AutomotrizWebAPI.Controllers
             }
         }
 
-
+        /*
         [HttpGet("/tipos_vehiculos")]
         public IActionResult GetTiposVehiculos()
         {
@@ -61,7 +61,7 @@ namespace AutomotrizWebAPI.Controllers
                 return StatusCode(500, "Error interno! Intente luego");
             }
         }
-
+        */
 
     }
 }
