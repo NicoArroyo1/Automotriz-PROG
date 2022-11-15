@@ -176,5 +176,20 @@ namespace Libreria.Datos
             }
             return lst;
         }
+
+        public List<Empleado> ObtenerEmpleados()
+        {
+            List<Empleado> lst = new List<Empleado>();
+            DataTable dt = EjecutarSP("pa_empleados");
+
+            foreach (DataRow fila in dt.Rows)
+            {
+                Empleado aux = new Empleado();
+                aux.Legajo = int.Parse(fila["legajo"].ToString());
+                aux.Nombre = fila["nombre"].ToString();
+                lst.Add(aux);
+            }
+            return lst;
+        }
     }
 }

@@ -11,7 +11,12 @@ namespace Libreria.Dominio
         public Automovil? Auto { get; set; }
         public Autoparte? AutoP { get; set; }
         public int Cantidad { get; set; }
-        
+        public double Precio { get; set; }
+
+        public DetalleFactura()
+        {
+
+        }
         public DetalleFactura(Automovil a, int cant)
         {
             Auto = a;

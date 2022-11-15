@@ -270,6 +270,12 @@ AS
 BEGIN
 	SET @next = (SELECT MAX(cod_factura)+1  FROM Facturas);
 END
+
+create procedure pa_empleados
+as
+begin
+	select legajo, nombre from Empleados
+end
 /*
 
 --SP CONSULTAR CLIENTES

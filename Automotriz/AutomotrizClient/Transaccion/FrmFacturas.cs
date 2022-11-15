@@ -14,7 +14,7 @@ namespace AutomotrizClient
     public partial class FrmFacturas : Form
     {
         private HelperDB helper;
-        private Factura nuevo;
+        private Factura oFactura;
 
         public FrmFacturas()
         {
@@ -23,9 +23,10 @@ namespace AutomotrizClient
             this.DoubleBuffered = true;
             this.SetStyle(ControlStyles.ResizeRedraw, true);
             helper = new HelperDB();
-            nuevo = new Factura();
+            oFactura = new Factura();
         }
 
+        #region AGREGADOS ESTETICOS
         private const int cGrip = 16;      // Grip size
         private const int cCaption = 32;   // Caption bar height
 
@@ -56,6 +57,7 @@ namespace AutomotrizClient
             }
             base.WndProc(ref m);
         }
+        #endregion
 
         private void Frm_Facturas_Load_1(object sender, EventArgs e)
         {
@@ -63,18 +65,16 @@ namespace AutomotrizClient
             CargarEmpleados();//OK
             CargarClientes();//OK
             CargarPlanes();//OK
+
             txtFecha.Text = DateTime.Now.ToString("dd/MM/yyyy");//OK
 
-            cbxEmpleado.SelectedIndex = -1;
-            cbxPlan.SelectedIndex = -1;
-            cboProductos.Text = "Seleccione el Producto";
             lblPlan.Select();
             cboProductos.Enabled = false;
             txtNroFactura.Hide();
-            dgvDetalles1.Hide();
             btnBuscar.Hide();
         }
 
+        #region SOPORTE WEBAPI
         private async void ProximaFactura()
         {
             string url = "http://localhost:5046/proxima_factura";
@@ -108,9 +108,9 @@ namespace AutomotrizClient
             string url = "http://localhost:5046/autoplanes";
             var res = await ClientSingleton.GetInstance().GetAsync(url);
             var lst = JsonConvert.DeserializeObject<List<Autoplan>>(res);
-            cboProductos.DataSource = lst;
-            cboProductos.ValueMember = "CodPlan";
-            cboProductos.DisplayMember = "NomPlan";
+            cboPlan.DataSource = lst;
+            cboPlan.ValueMember = "CodPlan";
+            cboPlan.DisplayMember = "NomPlan";
         }
 
         private async void CargarEmpleados()
@@ -118,9 +118,9 @@ namespace AutomotrizClient
             string url = "http://localhost:5046/empleados";
             var res = await ClientSingleton.GetInstance().GetAsync(url);
             var lst = JsonConvert.DeserializeObject<List<Empleado>>(res);
-            cboProductos.DataSource = lst;
-            cboProductos.ValueMember = "Legajo";
-            cboProductos.DisplayMember = "Nombre";
+            cboEmpleado.DataSource = lst;
+            cboEmpleado.ValueMember = "Legajo";
+            cboEmpleado.DisplayMember = "Nombre";
         }
 
         public async void CargarClientes()
@@ -132,15 +132,38 @@ namespace AutomotrizClient
             cboClientes.ValueMember = "NroFactura";
             cboClientes.DisplayMember = "Nombre";
         }
+        #endregion
 
+        private void BtnConsultar_Click(object sender, EventArgs e)
+        {
+            txtNroFactura.Show();
+            dgvDetalles1.Hide();
+            dgvDetalles1.Show();
+            btnBuscar.Show();
+        }
 
+        private void BtnNuevo_Click(object sender, EventArgs e)
+        {
+            txtFecha.Text = DateTime.Now.ToString("dd/MM/yyyy");
+            cboClientes.SelectedIndex = -1;
+            cboEmpleado.SelectedIndex = -1;
+            cboPlan.SelectedIndex = -1;
+            cboProductos.Text = "Seleccione el Producto";
+            lblPlan.Select();
+            cboProductos.Enabled = false;
+            txtNroFactura.Hide();
+            btnBuscar.Hide();
+            dgvDetalles1.Show();
+        }
 
-
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
 
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            /*
             if (cboProductos.Text.Equals(String.Empty))
             {
                 MessageBox.Show("Debe seleccionar un PRODUCTO!", "Control", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -153,50 +176,47 @@ namespace AutomotrizClient
                 return;
             }
 
-
-            foreach (DataGridViewRow row in dgvDetalles.Rows)
+            foreach (DataGridViewRow row in dgvDetalles1.Rows)
             {
                 if (row.Cells["colProd"].Value.ToString().Equals(cboProductos.Text))
                 {
                     MessageBox.Show("PRODUCTO: " + cboProductos.Text + " ya se encuentra como detalle!", "Control", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     return;
-
                 }
             }
-            DataRowView item = (DataRowView)cboProductos.SelectedItem;
 
-            int prod = Convert.ToInt32(item.Row.ItemArray[0]);
-            string nom = item.Row.ItemArray[1].ToString();
-            double pre = Convert.ToDouble(item.Row.ItemArray[5]);
-            //Producto p = new Producto(prod, nom, pre);
-            int cantidad = Convert.ToInt32(txtCantidad.Text);
+            DetalleFactura det;
+            DataGridViewRow fila = new DataGridViewRow();
+            fila.CreateCells(dgvDetalles1);
 
-            DetalleFactura detalle = new DetalleFactura(p, cantidad);
-            nuevo.AgregarDetalle(detalle);
-            Console.WriteLine(nuevo);
-            dgvDetalles.Rows.Add(new object[] { item.Row.ItemArray[0], item.Row.ItemArray[1], item.Row.ItemArray[5], txtCantidad.Text, pre * cantidad });
-
-            CalcularTotal();*/
-        }
-
-        
-
-        private void cboTipoProducto_SelectedIndexChanged(object sender, EventArgs e)
-        {/*
-            cboProductos.Enabled = true;
-            if (cboTipoProducto.SelectedIndex == 0)
+            if (rbAutomovil.Checked)
             {
-                cbxPlan.SelectedIndex = -1;
-                cbxPlan.Enabled = false;
-                CargarAutopartes();
+                det = new DetalleFactura();
+                det.Auto = new Automovil();
+                det.Auto.Patente = (int)cboProductos.SelectedValue;
+                det.Cantidad = Convert.ToInt32(txtCantidad.Text);
+
+                fila.Cells[0].Value = det.Auto.Patente.ToString();
             }
-            if(cboTipoProducto.SelectedIndex == 1)
+            else
             {
-                cbxPlan.SelectedIndex = -1;
-                cbxPlan.Enabled = true;
-                CargarAutomoviles();
-            }*/
+                det = new DetalleFactura();
+                det.AutoP = new Autoparte();
+                det.AutoP.NroSerie = (int)cboProductos.SelectedValue;
+                det.Cantidad = Convert.ToInt32(txtCantidad.Text);
+
+                fila.Cells[0].Value = det.AutoP.NroSerie.ToString();
+            }
+
+            det.Precio = Convert.ToDouble(txtPrecio.Text);
+            fila.Cells[1].Value = det.Cantidad.ToString();
+            fila.Cells[2].Value = det.Precio.ToString();
+            dgvDetalles1.Rows.Add(fila);
+
+            oFactura.AgregarDetalle(det);
+            CalcularTotal();
         }
+
 
         private void GuardarFactura()
         {/*
@@ -230,7 +250,7 @@ namespace AutomotrizClient
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            if (cbxEmpleado.SelectedIndex == -1)
+            if (cboEmpleado.SelectedIndex == -1)
             {
                 MessageBox.Show("Debe ingresar un empleado!", "Control", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
@@ -240,7 +260,7 @@ namespace AutomotrizClient
                 MessageBox.Show("Debe ingresar un cliente!", "Control", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
-            if (dgvDetalles.Rows.Count == 0)
+            if (dgvDetalles1.Rows.Count == 0)
             {
                 MessageBox.Show("Debe ingresar al menos detalle!", "Control", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
@@ -251,50 +271,21 @@ namespace AutomotrizClient
 
         private void CalcularTotal()
         {
-            double total = nuevo.CalcularTotal();
+            double total = oFactura.CalcularTotal();
             txtFinal.Text = total.ToString();
-
-        }
-
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-            this.Dispose();
         }
 
         private void dgvDetalles_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvDetalles.CurrentCell.ColumnIndex == 5)
+            if (dgvDetalles1.CurrentCell.ColumnIndex == 5)
             {
-                nuevo.QuitarDetalle(dgvDetalles.CurrentRow.Index);
-                dgvDetalles.Rows.Remove(dgvDetalles.CurrentRow);
+                oFactura.QuitarDetalle(dgvDetalles1.CurrentRow.Index);
+                dgvDetalles1.Rows.Remove(dgvDetalles1.CurrentRow);
                 CalcularTotal();
             }
         }
 
-        private void lblConsultar_Click(object sender, EventArgs e)
-        {
-            txtNroFactura.Show();
-            dgvDetalles.Hide();
-            dgvDetalles1.Show();
-            btnBuscar.Show();
-        }
-
-        private void lblNuevo_Click(object sender, EventArgs e)
-        {
-            txtFecha.Text = DateTime.Now.ToString("dd/MM/yyyy");
-            cboClientes.SelectedIndex = -1;
-            cbxEmpleado.SelectedIndex = -1;
-            cbxPlan.SelectedIndex = -1;
-            cboProductos.Text = "Seleccione el Producto";
-            lblPlan.Select();
-            cboProductos.Enabled = false;
-            txtNroFactura.Hide();
-            dgvDetalles1.Hide();
-            btnBuscar.Hide();
-            dgvDetalles.Show();
-        }
-
-        private void btnBuscar_Click(object sender, EventArgs e)
+        private async void btnBuscar_Click(object sender, EventArgs e)
         {/*
 
             cboClientes.SelectedIndex = -1;
@@ -329,5 +320,18 @@ namespace AutomotrizClient
         */
         }
 
+        private void rbAutomovil_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbAutomovil.Checked)
+            {
+                cboProductos.Enabled = true;
+                CargarAutomoviles();
+            }
+            else
+            {
+                cboProductos.Enabled = true;
+                CargarAutopartes();
+            }
+        }
     }
 }

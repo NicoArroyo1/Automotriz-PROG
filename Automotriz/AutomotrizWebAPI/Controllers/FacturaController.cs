@@ -61,7 +61,20 @@ namespace AutomotrizWebAPI.Controllers
             }
         }
 
-
+        [HttpGet("/empleados")]
+        public IActionResult GetEmpleados()
+        {
+            List<Empleado> lst = null;
+            try
+            {
+                lst = oConexion.ObtenerEmpleados();
+                return Ok(lst);
+            }
+            catch (Exception)
+            {
+                return StatusCode(500, "Error interno! Intente luego");
+            }
+        }
 
     }
 }
