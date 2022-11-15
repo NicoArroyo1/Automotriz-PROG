@@ -12,3 +12,17 @@ E:\Biblioteca\Escritorio\GitHub\Automotriz-PROG\Automotriz\Libreria\obj\Debug\ne
 E:\Biblioteca\Escritorio\GitHub\Automotriz-PROG\Automotriz\Libreria\obj\Debug\net6.0\refint\Libreria.dll
 E:\Biblioteca\Escritorio\GitHub\Automotriz-PROG\Automotriz\Libreria\obj\Debug\net6.0\Libreria.pdb
 E:\Biblioteca\Escritorio\GitHub\Automotriz-PROG\Automotriz\Libreria\obj\Debug\net6.0\ref\Libreria.dll
+C:\Users\20418473593\Desktop\GitHub\Automotriz-PROG\Automotriz\Libreria\bin\Debug\net6.0\Libreria.deps.json
+C:\Users\20418473593\Desktop\GitHub\Automotriz-PROG\Automotriz\Libreria\bin\Debug\net6.0\Libreria.dll
+C:\Users\20418473593\Desktop\GitHub\Automotriz-PROG\Automotriz\Libreria\bin\Debug\net6.0\Libreria.pdb
+C:\Users\20418473593\Desktop\GitHub\Automotriz-PROG\Automotriz\Libreria\obj\Debug\net6.0\Libreria.csproj.AssemblyReference.cache
+C:\Users\20418473593\Desktop\GitHub\Automotriz-PROG\Automotriz\Libreria\obj\Debug\net6.0\Libreria.Properties.Resources.resources
+C:\Users\20418473593\Desktop\GitHub\Automotriz-PROG\Automotriz\Libreria\obj\Debug\net6.0\Libreria.csproj.GenerateResource.cache
+C:\Users\20418473593\Desktop\GitHub\Automotriz-PROG\Automotriz\Libreria\obj\Debug\net6.0\Libreria.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\20418473593\Desktop\GitHub\Automotriz-PROG\Automotriz\Libreria\obj\Debug\net6.0\Libreria.AssemblyInfoInputs.cache
+C:\Users\20418473593\Desktop\GitHub\Automotriz-PROG\Automotriz\Libreria\obj\Debug\net6.0\Libreria.AssemblyInfo.cs
+C:\Users\20418473593\Desktop\GitHub\Automotriz-PROG\Automotriz\Libreria\obj\Debug\net6.0\Libreria.csproj.CoreCompileInputs.cache
+C:\Users\20418473593\Desktop\GitHub\Automotriz-PROG\Automotriz\Libreria\obj\Debug\net6.0\Libreria.dll
+C:\Users\20418473593\Desktop\GitHub\Automotriz-PROG\Automotriz\Libreria\obj\Debug\net6.0\refint\Libreria.dll
+C:\Users\20418473593\Desktop\GitHub\Automotriz-PROG\Automotriz\Libreria\obj\Debug\net6.0\Libreria.pdb
+C:\Users\20418473593\Desktop\GitHub\Automotriz-PROG\Automotriz\Libreria\obj\Debug\net6.0\ref\Libreria.dll

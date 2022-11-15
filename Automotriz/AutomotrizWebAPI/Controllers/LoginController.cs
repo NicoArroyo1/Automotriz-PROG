@@ -17,9 +17,9 @@ namespace AutomotrizWebAPI.Controllers
         }
 
         [HttpGet("/login")]
-        public IActionResult GetModelos(string user, string pass)
+        public IActionResult GetLogin(string user, string pass)
         {
-            int res = 0;
+            int res;
             try
             {
                 res = oConexion.Login(user, pass);

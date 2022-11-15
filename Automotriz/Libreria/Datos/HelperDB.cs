@@ -15,7 +15,7 @@ namespace Libreria.Datos
 
         public HelperDB()
         {
-            cnn = new SqlConnection(Properties.Resources.ConexionString1);
+            cnn = new SqlConnection(Properties.Resources.ConexionString2);
         }
 
         public int Login(string usario, string pass)

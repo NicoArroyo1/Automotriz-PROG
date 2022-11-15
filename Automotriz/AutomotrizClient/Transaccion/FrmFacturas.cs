@@ -63,8 +63,8 @@ namespace AutomotrizClient
             CargarEmpleados();//OK
             CargarClientes();//OK
             CargarPlanes();//OK
-            
             txtFecha.Text = DateTime.Now.ToString("dd/MM/yyyy");//OK
+
             cbxEmpleado.SelectedIndex = -1;
             cbxPlan.SelectedIndex = -1;
             cboProductos.Text = "Seleccione el Producto";

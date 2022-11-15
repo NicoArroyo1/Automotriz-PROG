@@ -21,19 +21,19 @@ namespace AutomotrizClient
 
         private async void btnOk_Click(object sender, EventArgs e)
         {
-            string url = "http://localhost:5046/login";
+            string url = $"http://localhost:5046/login?user={txtUsuario.Text}&pass={txtContraseña.Text}";
             var res = await ClientSingleton.GetInstance().GetAsync(url);
             var aux  = JsonConvert.DeserializeObject<int>(res);
 
-            int result = oConexion.Login(txtUsuario.Text, txtContraseña.Text);
+            //int result = oConexion.Login(txtUsuario.Text, txtContraseña.Text);
 
-            if (result == 1)
+            if (aux == 1)
             {
                 Menu menu = new Menu();
                 this.Hide();
                 menu.ShowDialog();
             }
-            else if (result == 0)
+            else if (aux == 0)
             {
                 MessageBox.Show("¡¡Usuario o contraseña incorrecta!!");
             }

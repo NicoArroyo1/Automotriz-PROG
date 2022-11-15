@@ -99,6 +99,18 @@ constraint fk_nro_serie foreign key (nro_serie)
 	references Autopartes (nro_serie)
 )
 
+CREATE TABLE Usuarios(
+id int IDENTITY(1,1) not null,
+nombre varchar(50) not NULL,
+usuario varchar(50) not null,
+pass varchar(50) not NULL,
+)
+
+--------------------------- INSERT USUARIOS --------------------------------------------------
+insert into Usuarios values  ('Analia', 'AnaliaRomulo', 'Ana123'),
+							('Mariano', 'MarianoRojas', 'Mar456'),
+							('Diego', 'admi','9876'),
+							('Nico', 'admin','admin')
 
 --------------------------- INSERT TIPOS_CLIENTES ---------------------------------------------
 insert into Tipos_cliente (descripcion)
@@ -242,6 +254,22 @@ as
 begin
 	select cod_factura, nom_cliente from Facturas
 end
+
+create procedure pa_login
+@usuario varchar(100),
+@pass varchar(100)
+as
+begin
+   select top 1 count(*) from usuarios u
+   where u.usuario = @usuario and u.pass = @pass
+end
+
+CREATE PROCEDURE SP_PROXIMO_ID
+@next int OUTPUT
+AS
+BEGIN
+	SET @next = (SELECT MAX(cod_factura)+1  FROM Facturas);
+END
 /*
 --SP PROXIMO ID
 
