@@ -63,7 +63,7 @@ namespace AutomotrizClient
             this.rbAutoparte = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtCliente = new System.Windows.Forms.TextBox();
+            this.cboClientes = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetalles)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetalles1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -442,12 +442,15 @@ namespace AutomotrizClient
             this.label1.TabIndex = 33;
             this.label1.Text = "label1";
             // 
-            // txtCliente
+            // cboClientes
             // 
-            this.txtCliente.Location = new System.Drawing.Point(140, 159);
-            this.txtCliente.Name = "txtCliente";
-            this.txtCliente.Size = new System.Drawing.Size(184, 23);
-            this.txtCliente.TabIndex = 34;
+            this.cboClientes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboClientes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cboClientes.FormattingEnabled = true;
+            this.cboClientes.Location = new System.Drawing.Point(140, 159);
+            this.cboClientes.Name = "cboClientes";
+            this.cboClientes.Size = new System.Drawing.Size(184, 23);
+            this.cboClientes.TabIndex = 34;
             // 
             // FrmFacturas
             // 
@@ -455,7 +458,7 @@ namespace AutomotrizClient
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(894, 690);
-            this.Controls.Add(this.txtCliente);
+            this.Controls.Add(this.cboClientes);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dgvDetalles1);
             this.Controls.Add(this.btnBuscar);
@@ -529,6 +532,6 @@ namespace AutomotrizClient
         private RadioButton rbAutoparte;
         private GroupBox groupBox1;
         private Label label1;
-        private TextBox txtCliente;
+        private ComboBox cboClientes;
     }
 }

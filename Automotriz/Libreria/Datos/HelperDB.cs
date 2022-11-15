@@ -15,7 +15,7 @@ namespace Libreria.Datos
 
         public HelperDB()
         {
-            cnn = new SqlConnection(Properties.Resources.ConexionString2);
+            cnn = new SqlConnection(Properties.Resources.ConexionString1);
         }
 
         public int Login(string usario, string pass)
@@ -156,8 +156,25 @@ namespace Libreria.Datos
             {
                 Automovil aux = new Automovil();
                 aux.Patente = int.Parse(fila["patente"].ToString());
-                
+                aux.Descripcion = fila["automovil"].ToString();
+                lst.Add(aux);
             }
+            return lst;
+        }
+
+        public List<Cliente> ObtenerClientes()
+        {
+            List<Cliente> lst = new List<Cliente>();
+            DataTable dt = EjecutarSP("pa_clientes");
+
+            foreach (DataRow fila in dt.Rows)
+            {
+                Cliente aux = new Cliente();
+                aux.NroFactura = int.Parse(fila["cod_factura"].ToString());
+                aux.Nombre = fila["nom_cliente"].ToString();
+                lst.Add(aux);
+            }
+            return lst;
         }
     }
 }

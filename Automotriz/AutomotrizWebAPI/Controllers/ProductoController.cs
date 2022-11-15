@@ -65,7 +65,7 @@ namespace AutomotrizWebAPI.Controllers
         [HttpGet("/automoviles")]
         public IActionResult GetAutomoviles()
         {
-            List<Autoparte> lst = null;
+            List<Automovil> lst = null;
             try
             {
                 lst = oConexion.ObtenerAutomoviles();

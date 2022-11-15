@@ -59,20 +59,20 @@ namespace AutomotrizClient
 
         private void Frm_Facturas_Load_1(object sender, EventArgs e)
         {
-            ProximaFactura();
-            CargarPlanes();
-            CargarEmpleados();/*
-            txtFecha.Text = DateTime.Now.ToString("dd/MM/yyyy");
-            cboClientes.SelectedIndex = -1;
+            ProximaFactura();//OK
+            CargarEmpleados();//OK
+            CargarClientes();//OK
+            CargarPlanes();//OK
+            
+            txtFecha.Text = DateTime.Now.ToString("dd/MM/yyyy");//OK
             cbxEmpleado.SelectedIndex = -1;
             cbxPlan.SelectedIndex = -1;
-            cboTipoProducto.Text = "Seleccione el Tipo de Producto";
             cboProductos.Text = "Seleccione el Producto";
             lblPlan.Select();
             cboProductos.Enabled = false;
             txtNroFactura.Hide();
             dgvDetalles1.Hide();
-            btnBuscar.Hide();*/
+            btnBuscar.Hide();
         }
 
         private async void ProximaFactura()
@@ -123,7 +123,15 @@ namespace AutomotrizClient
             cboProductos.DisplayMember = "Nombre";
         }
 
-
+        public async void CargarClientes()
+        {
+            string url = "http://localhost:5046/clientes";
+            var res = await ClientSingleton.GetInstance().GetAsync(url);
+            var lst = JsonConvert.DeserializeObject<List<Cliente>>(res);
+            cboClientes.DataSource = lst;
+            cboClientes.ValueMember = "NroFactura";
+            cboClientes.DisplayMember = "Nombre";
+        }
 
 
 
@@ -132,7 +140,7 @@ namespace AutomotrizClient
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-
+            /*
             if (cboProductos.Text.Equals(String.Empty))
             {
                 MessageBox.Show("Debe seleccionar un PRODUCTO!", "Control", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -168,7 +176,7 @@ namespace AutomotrizClient
             Console.WriteLine(nuevo);
             dgvDetalles.Rows.Add(new object[] { item.Row.ItemArray[0], item.Row.ItemArray[1], item.Row.ItemArray[5], txtCantidad.Text, pre * cantidad });
 
-            CalcularTotal();
+            CalcularTotal();*/
         }
 
         
@@ -277,7 +285,6 @@ namespace AutomotrizClient
             cboClientes.SelectedIndex = -1;
             cbxEmpleado.SelectedIndex = -1;
             cbxPlan.SelectedIndex = -1;
-            cboTipoProducto.Text = "Seleccione el Tipo de Producto";
             cboProductos.Text = "Seleccione el Producto";
             lblPlan.Select();
             cboProductos.Enabled = false;

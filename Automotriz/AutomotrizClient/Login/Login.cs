@@ -1,5 +1,8 @@
 using AutomotrizClient;
+using AutomotrizClient.Http;
 using Libreria.Datos;
+using Libreria.Dominio;
+using Newtonsoft.Json;
 
 namespace AutomotrizClient
 {
@@ -16,8 +19,12 @@ namespace AutomotrizClient
 
         }
 
-        private void btnOk_Click(object sender, EventArgs e)
+        private async void btnOk_Click(object sender, EventArgs e)
         {
+            string url = "http://localhost:5046/login";
+            var res = await ClientSingleton.GetInstance().GetAsync(url);
+            var aux  = JsonConvert.DeserializeObject<int>(res);
+
             int result = oConexion.Login(txtUsuario.Text, txtContraseña.Text);
 
             if (result == 1)

@@ -32,7 +32,7 @@ namespace AutomotrizWebAPI.Controllers
         }
 
         [HttpGet("/autoplanes")]
-        public IActionResult GetAutopartes()
+        public IActionResult GetAutoplanes()
         {
             List<Autoplan> lst = null;
             try
@@ -46,7 +46,20 @@ namespace AutomotrizWebAPI.Controllers
             }
         }
 
-
+        [HttpGet("/clientes")]
+        public IActionResult GetClientes()
+        {
+            List<Cliente> lst = null;
+            try
+            {
+                lst = oConexion.ObtenerClientes();
+                return Ok(lst);
+            }
+            catch (Exception)
+            {
+                return StatusCode(500, "Error interno! Intente luego");
+            }
+        }
 
 
 

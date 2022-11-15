@@ -9,6 +9,7 @@ namespace Libreria.Dominio
     public class Automovil
     {
         public int Patente { get; set; }
+        public string Descripcion { get; set; }
         public int CodModelo { get; set; }
         public int CodTipoVehiculo { get; set; }
         public string Color { get; set; }
