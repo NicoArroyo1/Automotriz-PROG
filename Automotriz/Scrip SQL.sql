@@ -228,6 +228,20 @@ begin
 	select cod_plan, nom_plan from Autoplanes
 end
 
+create procedure pa_automoviles
+as
+begin
+	select patente, m.modelo +' - '+ convert(varchar, patente) 'automovil'
+	from Automoviles a
+	join Tipos_vehiculo t on t.cod_tipo_vehiculo = a.cod_tipo_vehiculo
+	join Modelos m on m.cod_modelo = a.cod_modelo
+end
+
+create procedure pa_clientes
+as
+begin
+	select cod_factura, nom_cliente from Facturas
+end
 /*
 --SP PROXIMO ID
 
