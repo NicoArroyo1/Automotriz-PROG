@@ -271,14 +271,6 @@ BEGIN
 	SET @next = (SELECT MAX(cod_factura)+1  FROM Facturas);
 END
 /*
---SP PROXIMO ID
-
-CREATE PROCEDURE SP_PROXIMO_ID
-@next int OUTPUT
-AS
-BEGIN
-	SET @next = (SELECT MAX(cod_factura)+1  FROM Facturas);
-END
 
 --SP CONSULTAR CLIENTES
 
