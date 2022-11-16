@@ -63,6 +63,7 @@ constraint pk_tipos_producto primary key(cod_tipo_producto)
 create table Productos
 (
 cod_producto int identity(1,1),
+descripcion varchar(50) null,
 cod_tipo_producto int,
 cod_modelo int,
 cod_tipo_vehiculo int,
@@ -74,7 +75,7 @@ constraint fk_modelos foreign key (cod_modelo)
 	references Modelos (cod_modelo),
 constraint fk_tipos_vehiculo foreign key (cod_tipo_vehiculo)
 	references Tipos_vehiculo (cod_tipo_vehiculo),
-constraint fk_tipos_productro foreign key (cod_tipo_producto)
+constraint fk_tipos_producto foreign key (cod_tipo_producto)
 	references Tipos_producto (cod_tipo_producto)
 )
 
@@ -212,17 +213,18 @@ insert into Productos(cod_tipo_producto, cod_modelo, cod_tipo_vehiculo, color, p
 				   (1, 7, 1,'negro', 4804518, '2022-10-11'),
 				   (1, 5, 7,'azul',	4408912, '2022-05-16'),
 				   (1, 2, 6,'blanco', 4173716, '2022-11-30'),
-				   (1, 7, 1,'gris',	4296281, '2022-07-26'),
-				   (2, 2, 3, 'generico', 19129,	'2022-02-15'),
-				   (2, 3, 4, 'generico', 17861,	'2022-01-26'),
-				   (2, 5, 1, 'generico', 17745,	'2022-08-12'),
-				   (2, 7, 5, 'generico', 10862,	'2022-12-15'),
-				   (2, 1, 4, 'generico', 15332,	'2022-12-23'),
-				   (2, 6, 5, 'generico', 9327,	'2022-07-27'),
-				   (2, 3, 2, 'generico', 10872,	'2022-12-18'),
-				   (2, 4, 1, 'generico', 19313,	'2022-04-07'),
-				   (2, 5, 7, 'generico', 16654,	'2021-12-13'),
-				   (2, 4, 6, 'generico', 11986,	'2022-09-04')
+				   (1, 7, 1,'gris',	4296281, '2022-07-26')
+insert into Productos(cod_tipo_producto, descripcion	, cod_modelo, cod_tipo_vehiculo, color, precio, fec_fabricacion)
+			 values (2                 ,'Puerta'		, 2			, 3, 'generico', 19129,	'2022-02-15'),
+				   (2					, 'Frenos'		,3			, 4, 'generico', 17861,	'2022-01-26'),
+				   (2					, 'Correa'		,5			, 1, 'generico', 17745,	'2022-08-12'),
+				   (2					, 'Amortiguadores',7		, 5, 'generico', 10862,	'2022-12-15'),
+				   (2					, 'Lampara',1				, 4, 'generico', 15332,	'2022-12-23'),
+				   (2					, 'Bateria',6				, 5, 'generico', 9327,	'2022-07-27'),
+				   (2					, 'Bujias',3				, 2, 'generico', 10872,	'2022-12-18'),
+				   (2					, 'Inyector',4				, 1, 'generico', 19313,	'2022-04-07'),
+				   (2					, 'Limpiaparabrisa',5		, 7, 'generico', 16654,	'2021-12-13'),
+				   (2					, 'Cubierta',4				, 6, 'generico', 11986,	'2022-09-04')
 
 -------------------------- INSERT AUTOMOVILES -----------------------------------------------
 --insert into Automoviles (cod_modelo,cod_tipo_vehiculo,color,precio,fec_fabricacion)
@@ -260,7 +262,7 @@ insert into Facturas (cod_empleado,fecha,nom_cliente,cuit       ,  cod_plan,cod_
 --							(	5		,	null  ,	6		,	3	,	15291	),
 --							(	7		,	null  ,	7		,	3	,	13666	),
 --							(	6		,	null  ,	8		,	2	,	9944	)
-insert into Detalles_factura (cod_factura,cod_producto,cantidad,precio)
+insert into Detalles_factura (cod_factura, cod_producto,cantidad,precio)
 					  values(1,	1, 1, 4160072),
 							(2,	2,	1,	4684958),
 							(3,	5,	1,	4333919),
@@ -295,9 +297,8 @@ end
 create procedure pa_autopartes
 as
 begin
-	select cod_producto, tp.descripcion from Productos p
-	join Tipos_producto tp on tp.cod_tipo_producto=p.cod_tipo_producto
-	where tp.cod_tipo_producto=2
+	select cod_producto, descripcion from Productos
+	where cod_tipo_producto=2
 end
 
 create procedure pa_autoplanes
@@ -373,6 +374,6 @@ CREATE PROC SP_INSERTAR_DETALLE
 	@precio money
 as
 begin
-	INSERT INTO Detalles_factura (cod_factura, cod_producto, cantidad,precio)
-	VALUES (@cod_factura,@cod_producto, @cantidad, @precio)
+	INSERT INTO Detalles_factura (cod_factura, cod_producto, cantidad, precio)
+	VALUES (@cod_factura, @cod_producto, @cantidad, @precio)
 end
