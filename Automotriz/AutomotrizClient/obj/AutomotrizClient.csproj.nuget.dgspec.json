@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\20418473593\\Desktop\\GitHub\\Automotriz-PROG\\Automotriz\\AutomotrizClient\\AutomotrizClient.csproj": {}
+    "D:\\Users\\diego\\Documents\\GitHub\\Automotriz-PROG\\Automotriz\\AutomotrizClient\\AutomotrizClient.csproj": {}
   },
   "projects": {
-    "C:\\Users\\20418473593\\Desktop\\GitHub\\Automotriz-PROG\\Automotriz\\AutomotrizClient\\AutomotrizClient.csproj": {
+    "D:\\Users\\diego\\Documents\\GitHub\\Automotriz-PROG\\Automotriz\\AutomotrizClient\\AutomotrizClient.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\20418473593\\Desktop\\GitHub\\Automotriz-PROG\\Automotriz\\AutomotrizClient\\AutomotrizClient.csproj",
+        "projectUniqueName": "D:\\Users\\diego\\Documents\\GitHub\\Automotriz-PROG\\Automotriz\\AutomotrizClient\\AutomotrizClient.csproj",
         "projectName": "AutomotrizClient",
-        "projectPath": "C:\\Users\\20418473593\\Desktop\\GitHub\\Automotriz-PROG\\Automotriz\\AutomotrizClient\\AutomotrizClient.csproj",
-        "packagesPath": "C:\\Users\\20418473593\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\20418473593\\Desktop\\GitHub\\Automotriz-PROG\\Automotriz\\AutomotrizClient\\obj\\",
+        "projectPath": "D:\\Users\\diego\\Documents\\GitHub\\Automotriz-PROG\\Automotriz\\AutomotrizClient\\AutomotrizClient.csproj",
+        "packagesPath": "C:\\Users\\diego\\.nuget\\packages\\",
+        "outputPath": "D:\\Users\\diego\\Documents\\GitHub\\Automotriz-PROG\\Automotriz\\AutomotrizClient\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\20418473593\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\diego\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -28,8 +28,8 @@
           "net6.0-windows7.0": {
             "targetAlias": "net6.0-windows",
             "projectReferences": {
-              "C:\\Users\\20418473593\\Desktop\\GitHub\\Automotriz-PROG\\Automotriz\\Libreria\\Libreria.csproj": {
-                "projectPath": "C:\\Users\\20418473593\\Desktop\\GitHub\\Automotriz-PROG\\Automotriz\\Libreria\\Libreria.csproj"
+              "D:\\Users\\diego\\Documents\\GitHub\\Automotriz-PROG\\Automotriz\\Libreria\\Libreria.csproj": {
+                "projectPath": "D:\\Users\\diego\\Documents\\GitHub\\Automotriz-PROG\\Automotriz\\Libreria\\Libreria.csproj"
               }
             }
           }
@@ -72,17 +72,17 @@
         }
       }
     },
-    "C:\\Users\\20418473593\\Desktop\\GitHub\\Automotriz-PROG\\Automotriz\\Libreria\\Libreria.csproj": {
+    "D:\\Users\\diego\\Documents\\GitHub\\Automotriz-PROG\\Automotriz\\Libreria\\Libreria.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\20418473593\\Desktop\\GitHub\\Automotriz-PROG\\Automotriz\\Libreria\\Libreria.csproj",
+        "projectUniqueName": "D:\\Users\\diego\\Documents\\GitHub\\Automotriz-PROG\\Automotriz\\Libreria\\Libreria.csproj",
         "projectName": "Libreria",
-        "projectPath": "C:\\Users\\20418473593\\Desktop\\GitHub\\Automotriz-PROG\\Automotriz\\Libreria\\Libreria.csproj",
-        "packagesPath": "C:\\Users\\20418473593\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\20418473593\\Desktop\\GitHub\\Automotriz-PROG\\Automotriz\\Libreria\\obj\\",
+        "projectPath": "D:\\Users\\diego\\Documents\\GitHub\\Automotriz-PROG\\Automotriz\\Libreria\\Libreria.csproj",
+        "packagesPath": "C:\\Users\\diego\\.nuget\\packages\\",
+        "outputPath": "D:\\Users\\diego\\Documents\\GitHub\\Automotriz-PROG\\Automotriz\\Libreria\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\20418473593\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\diego\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

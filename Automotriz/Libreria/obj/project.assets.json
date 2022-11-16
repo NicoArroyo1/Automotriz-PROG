@@ -470,19 +470,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\20418473593\\.nuget\\packages\\": {}
+    "C:\\Users\\diego\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\20418473593\\Desktop\\GitHub\\Automotriz-PROG\\Automotriz\\Libreria\\Libreria.csproj",
+      "projectUniqueName": "D:\\Users\\diego\\Documents\\GitHub\\Automotriz-PROG\\Automotriz\\Libreria\\Libreria.csproj",
       "projectName": "Libreria",
-      "projectPath": "C:\\Users\\20418473593\\Desktop\\GitHub\\Automotriz-PROG\\Automotriz\\Libreria\\Libreria.csproj",
-      "packagesPath": "C:\\Users\\20418473593\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\20418473593\\Desktop\\GitHub\\Automotriz-PROG\\Automotriz\\Libreria\\obj\\",
+      "projectPath": "D:\\Users\\diego\\Documents\\GitHub\\Automotriz-PROG\\Automotriz\\Libreria\\Libreria.csproj",
+      "packagesPath": "C:\\Users\\diego\\.nuget\\packages\\",
+      "outputPath": "D:\\Users\\diego\\Documents\\GitHub\\Automotriz-PROG\\Automotriz\\Libreria\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\20418473593\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\diego\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
