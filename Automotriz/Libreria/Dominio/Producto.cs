@@ -16,5 +16,16 @@ namespace Libreria.Dominio
         public string Color { get; set; }
         public double Precio { get; set; }
         public DateTime FecFabricacion { get; set; }
+
+        public Producto()
+        {
+
+        }
+
+        public Producto(int cod, string desc)
+        {
+            CodProducto = cod;
+            Descripcion = desc;
+        }
     }
 }

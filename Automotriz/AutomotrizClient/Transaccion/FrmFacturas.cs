@@ -87,22 +87,22 @@ namespace AutomotrizClient
         {
             string url = "http://localhost:5046/autopartes";
             var res = await ClientSingleton.GetInstance().GetAsync(url);
-            var lst = JsonConvert.DeserializeObject<List<Autoparte>>(res);
+            var lst = JsonConvert.DeserializeObject<List<Producto>>(res);
             cboProductos.DataSource = lst;
             //cboProductos.ValueMember = "NroSerie";
             cboProductos.ValueMember = "CodProducto";
-            cboProductos.DisplayMember = "Nombre";
+            cboProductos.DisplayMember = "Descripcion";
         }
 
         private async void CargarAutomoviles()
         {
             string url = "http://localhost:5046/automoviles";
             var res = await ClientSingleton.GetInstance().GetAsync(url);
-            var lst = JsonConvert.DeserializeObject<List<Automovil>>(res);
+            var lst = JsonConvert.DeserializeObject<List<Producto>>(res);
             cboProductos.DataSource = lst;
             //cboProductos.ValueMember = "Patente";
             cboProductos.ValueMember = "CodProducto";
-            cboProductos.DisplayMember = "Patente";
+            cboProductos.DisplayMember = "Descripcion";
         }
 
         private async void CargarPlanes()
@@ -203,11 +203,12 @@ namespace AutomotrizClient
                 //fila.Cells[0].Value = det.Auto.Patente.ToString();
 
                 det = new DetalleFactura();
-                det.producto= new Producto();
-                det.producto.CodProducto = (int)cboProductos.SelectedValue;
+                det.Producto = new Producto();
+                det.Producto.CodProducto = (int)cboProductos.SelectedValue;
+                det.Producto.Descripcion = cboProductos.Text;
                 det.Cantidad = Convert.ToInt32(txtCantidad.Text);
 
-                fila.Cells[0].Value = det.producto.CodProducto.ToString();
+                fila.Cells[0].Value = det.Producto.CodProducto.ToString();
             }
             else
             {
@@ -219,16 +220,17 @@ namespace AutomotrizClient
                 //fila.Cells[0].Value = det.AutoP.NroSerie.ToString();
 
                 det = new DetalleFactura();
-                det.producto = new Producto();
-                det.producto.CodProducto = (int)cboProductos.SelectedValue;//creo que seria mejor eliminar este combo box por que esta quedando al pedo
+                det.Producto = new Producto();
+                det.Producto.CodProducto = (int)cboProductos.SelectedValue;//creo que seria mejor eliminar este combo box por que esta quedando al pedo
+                det.Producto.Descripcion = cboProductos.Text;
                 det.Cantidad = Convert.ToInt32(txtCantidad.Text);//aunque voy dormido son las 5 de la mañana...
-
-                fila.Cells[0].Value = det.producto.CodProducto.ToString();
+                fila.Cells[0].Value = det.Producto.CodProducto.ToString();
             }
 
             det.Precio = Convert.ToDouble(txtPrecio.Text);
-            fila.Cells[1].Value = det.Cantidad.ToString();
-            fila.Cells[2].Value = det.Precio.ToString();
+            fila.Cells[1].Value = det.Producto.Descripcion;
+            fila.Cells[2].Value = det.Cantidad.ToString();
+            fila.Cells[3].Value = det.Precio.ToString();
             dgvDetalles1.Rows.Add(fila);
 
             oFactura.AgregarDetalle(det);
@@ -240,9 +242,10 @@ namespace AutomotrizClient
         {
             //datos de la factura
             oFactura.CodEmpleado = cboEmpleado.SelectedIndex + 1;
-            oFactura.NomCliente = cboClientes.SelectedValue.ToString();
+            oFactura.NomCliente = cboClientes.Text;
             oFactura.CodPlan = cboPlan.SelectedIndex + 1;
             oFactura.CodTipoCliente = 1;
+            oFactura.Cuit = 20418473593;
 
 
             string bodyContent = JsonConvert.SerializeObject(oFactura);

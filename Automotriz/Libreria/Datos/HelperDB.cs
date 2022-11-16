@@ -122,7 +122,7 @@ namespace Libreria.Datos
             {
                 Producto aux = new Producto();
                 aux.CodProducto = int.Parse(dr["cod_producto"].ToString());
-                aux.Descripcion = dr["autoparte"].ToString();
+                aux.Descripcion = dr["descripcion"].ToString();
                 lst.Add(aux);
             }
 
@@ -186,7 +186,7 @@ namespace Libreria.Datos
             foreach (DataRow fila in dt.Rows)
             {
                 Producto aux = new Producto();
-                aux.CodProducto = int.Parse(fila["CodProducto"].ToString());
+                aux.CodProducto = int.Parse(fila["cod_producto"].ToString());
                 aux.Descripcion = fila["automovil"].ToString();
                 lst.Add(aux);
             }
@@ -267,7 +267,7 @@ namespace Libreria.Datos
 
                     //parametros de entrada
                     cmdDetalle.Parameters.AddWithValue("@cod_factura", idMaestro);
-                    cmdDetalle.Parameters.AddWithValue("@cod_producto",det.producto.CodProducto);
+                    cmdDetalle.Parameters.AddWithValue("@cod_producto",det.Producto.CodProducto);
                     //cmdDetalle.Parameters.AddWithValue("@patente", det.Auto.Patente);
                     //cmdDetalle.Parameters.AddWithValue("@nro_serie", det.AutoP.NroSerie);
                     cmdDetalle.Parameters.AddWithValue("@cantidad", det.Cantidad);

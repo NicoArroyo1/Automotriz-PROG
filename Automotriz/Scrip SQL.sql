@@ -318,6 +318,19 @@ begin
 	where tp.cod_tipo_producto=1
 end
 
+/*
+create procedure pa_automoviles
+as
+begin
+	select cod_producto, m.modelo +' - '+ t.descripcion  'automovil'
+	from Productos p
+	join Tipos_vehiculo t on t.cod_tipo_vehiculo = p.cod_tipo_vehiculo
+	join Modelos m on m.cod_modelo = p.cod_modelo
+	join Tipos_producto tp on tp.cod_tipo_producto=p.cod_tipo_producto
+	where tp.cod_tipo_producto=1
+end
+*/
+
 create procedure pa_clientes
 as
 begin

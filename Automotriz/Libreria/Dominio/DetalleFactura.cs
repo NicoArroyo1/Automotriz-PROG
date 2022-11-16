@@ -13,7 +13,7 @@ namespace Libreria.Dominio
         //aca del codigo no toque nada pero imagino que deberia de agregar un Cod_producto
         //public Automovil? Auto { get; set; }
         //public Autoparte? AutoP { get; set; }
-        public Producto producto { get; set; }
+        public Producto Producto { get; set; }
         public int Cantidad { get; set; }
         public double Precio { get; set; }
 
@@ -36,7 +36,7 @@ namespace Libreria.Dominio
         //}
         public DetalleFactura(Producto p, int cant) 
         {
-            producto = p;
+            Producto = p;
             Cantidad= cant;
         }
 
@@ -54,7 +54,7 @@ namespace Libreria.Dominio
 
         public double CalcularSubTotal() 
         {
-            return producto.Precio * Cantidad;
+            return Producto.Precio * Cantidad;
         }
     }
 }
