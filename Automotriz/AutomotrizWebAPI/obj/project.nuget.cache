@@ -1,7 +1,11 @@
 {
   "version": 2,
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   "dgSpecHash": "vn8nGM9scLOS3gbDXjg2mra7QAPgx78m+/ngmve0zyDrSbTy1C29lVnMKHh4zlFnxh8N1aUMA4lCLETNDQQLmA==",
+=======
+  "dgSpecHash": "dg7l8YvV9xXEt04uDEMiWkMyguqyDmDHQAQZlDGr53sCshRvfhp8rl07seFNgGFlQfqyC2ICCm6/yMCR2VrDFA==",
+>>>>>>> Stashed changes
 =======
   "dgSpecHash": "dg7l8YvV9xXEt04uDEMiWkMyguqyDmDHQAQZlDGr53sCshRvfhp8rl07seFNgGFlQfqyC2ICCm6/yMCR2VrDFA==",
 >>>>>>> Stashed changes
@@ -12,6 +16,11 @@
     "C:\\Users\\diego\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\diego\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+    "C:\\Users\\diego\\.nuget\\packages\\microsoft.reportingservices.reportviewercontrol.winforms\\150.1537.0\\microsoft.reportingservices.reportviewercontrol.winforms.150.1537.0.nupkg.sha512",
+    "C:\\Users\\diego\\.nuget\\packages\\microsoft.sqlserver.types\\14.0.314.76\\microsoft.sqlserver.types.14.0.314.76.nupkg.sha512",
+>>>>>>> Stashed changes
 =======
     "C:\\Users\\diego\\.nuget\\packages\\microsoft.reportingservices.reportviewercontrol.winforms\\150.1537.0\\microsoft.reportingservices.reportviewercontrol.winforms.150.1537.0.nupkg.sha512",
     "C:\\Users\\diego\\.nuget\\packages\\microsoft.sqlserver.types\\14.0.314.76\\microsoft.sqlserver.types.14.0.314.76.nupkg.sha512",
