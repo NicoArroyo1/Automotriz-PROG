@@ -77,5 +77,14 @@ namespace Libreria.Properties {
                 return ResourceManager.GetString("ConexionString2", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Data Source=(localdb)\Servidor;Initial Catalog=AutomotrizDB_PROG;Integrated Security=True.
+        /// </summary>
+        internal static string ConexionString3 {
+            get {
+                return ResourceManager.GetString("ConexionString3", resourceCulture);
+            }
+        }
     }
 }

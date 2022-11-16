@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutomotrizWebAPI", "Automot
 		{F02A6BF3-A5D8-454D-9C3D-3334F78D8439} = {F02A6BF3-A5D8-454D-9C3D-3334F78D8439}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reportes", "Reportes\Reportes.csproj", "{EA1CC31F-14CA-4CDE-B0B3-2FC7FA7CD831}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{DA504242-A0ED-4139-BD9D-1E2111EC6B89}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DA504242-A0ED-4139-BD9D-1E2111EC6B89}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DA504242-A0ED-4139-BD9D-1E2111EC6B89}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA1CC31F-14CA-4CDE-B0B3-2FC7FA7CD831}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA1CC31F-14CA-4CDE-B0B3-2FC7FA7CD831}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA1CC31F-14CA-4CDE-B0B3-2FC7FA7CD831}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA1CC31F-14CA-4CDE-B0B3-2FC7FA7CD831}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

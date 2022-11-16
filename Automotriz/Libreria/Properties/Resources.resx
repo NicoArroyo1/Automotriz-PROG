@@ -125,4 +125,8 @@
     <value>Data Source=WS73116\SQLEXPRESS;Initial Catalog=AutomotrizDB_PROG;Integrated Security=True</value>
     <comment>mds</comment>
   </data>
+  <data name="ConexionString3" xml:space="preserve">
+    <value>Data Source=(localdb)\Servidor;Initial Catalog=AutomotrizDB_PROG;Integrated Security=True</value>
+    <comment>ZombiePortatil</comment>
+  </data>
 </root>
