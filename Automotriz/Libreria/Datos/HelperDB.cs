@@ -267,7 +267,7 @@ namespace Libreria.Datos
 
                     //parametros de entrada
                     cmdDetalle.Parameters.AddWithValue("@cod_factura", idMaestro);
-                    cmdDetalle.Parameters.AddWithValue("@cod_producto",det.Producto.CodProducto);
+                    cmdDetalle.Parameters.AddWithValue("@cod_producto",det.CodProducto);
                     //cmdDetalle.Parameters.AddWithValue("@patente", det.Auto.Patente);
                     //cmdDetalle.Parameters.AddWithValue("@nro_serie", det.AutoP.NroSerie);
                     cmdDetalle.Parameters.AddWithValue("@cantidad", det.Cantidad);

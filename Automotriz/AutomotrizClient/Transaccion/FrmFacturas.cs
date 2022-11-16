@@ -203,12 +203,10 @@ namespace AutomotrizClient
                 //fila.Cells[0].Value = det.Auto.Patente.ToString();
 
                 det = new DetalleFactura();
-                det.Producto = new Producto();
-                det.Producto.CodProducto = (int)cboProductos.SelectedValue;
-                det.Producto.Descripcion = cboProductos.Text;
-                det.Cantidad = Convert.ToInt32(txtCantidad.Text);
+                //det.Producto = new Producto();
+                det.CodProducto = (int)cboProductos.SelectedValue;
 
-                fila.Cells[0].Value = det.Producto.CodProducto.ToString();
+                fila.Cells[0].Value = det.CodProducto.ToString();
             }
             else
             {
@@ -220,15 +218,16 @@ namespace AutomotrizClient
                 //fila.Cells[0].Value = det.AutoP.NroSerie.ToString();
 
                 det = new DetalleFactura();
-                det.Producto = new Producto();
-                det.Producto.CodProducto = (int)cboProductos.SelectedValue;//creo que seria mejor eliminar este combo box por que esta quedando al pedo
-                det.Producto.Descripcion = cboProductos.Text;
-                det.Cantidad = Convert.ToInt32(txtCantidad.Text);//aunque voy dormido son las 5 de la mañana...
-                fila.Cells[0].Value = det.Producto.CodProducto.ToString();
+                //det.Producto = new Producto();
+                det.CodProducto = (int)cboProductos.SelectedValue;
+                //det.Producto.Descripcion = cboProductos.Text;
+                
+                fila.Cells[0].Value = det.CodProducto.ToString();
             }
 
+            det.Cantidad = Convert.ToInt32(txtCantidad.Text);
             det.Precio = Convert.ToDouble(txtPrecio.Text);
-            fila.Cells[1].Value = det.Producto.Descripcion;
+            fila.Cells[1].Value = cboProductos.Text;
             fila.Cells[2].Value = det.Cantidad.ToString();
             fila.Cells[3].Value = det.Precio.ToString();
             dgvDetalles1.Rows.Add(fila);
@@ -346,6 +345,8 @@ namespace AutomotrizClient
             else
             {
                 cboProductos.Enabled = true;
+                cboPlan.Enabled = false;
+                cboPlan.SelectedIndex = -1;
                 CargarAutopartes();
             }
         }

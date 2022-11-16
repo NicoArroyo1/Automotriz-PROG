@@ -80,7 +80,7 @@ constraint fk_tipos_producto foreign key (cod_tipo_producto)
 )
 
 create table Autoplanes(
-cod_plan int identity(1,1),
+cod_plan int identity(0,1),
 nom_plan varchar(30),
 cant_coutas int,
 tasa_interes int,
@@ -170,7 +170,8 @@ INSERT INTO Modelos (modelo)
 
 -------------------------- INSERT AUTOPLANES -------------------------------------------------
 INSERT INTO autoplanes (nom_plan        , cant_coutas, tasa_interes)
-				VALUES ('Tu Primer 0KM' , 24         , 15),
+				VALUES('Autoparte',0,0),
+						('Tu Primer 0KM' , 24         , 15),
 					   ('Plan Ahorro'   , 12         , 10),
 					   ('Plan 50 Cuotas', 50         , 25),
 					   ('Plan Automovil', 16         , 17)
@@ -317,19 +318,6 @@ begin
 	join Tipos_producto tp on tp.cod_tipo_producto=p.cod_tipo_producto
 	where tp.cod_tipo_producto=1
 end
-
-/*
-create procedure pa_automoviles
-as
-begin
-	select cod_producto, m.modelo +' - '+ t.descripcion  'automovil'
-	from Productos p
-	join Tipos_vehiculo t on t.cod_tipo_vehiculo = p.cod_tipo_vehiculo
-	join Modelos m on m.cod_modelo = p.cod_modelo
-	join Tipos_producto tp on tp.cod_tipo_producto=p.cod_tipo_producto
-	where tp.cod_tipo_producto=1
-end
-*/
 
 create procedure pa_clientes
 as
