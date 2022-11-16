@@ -21,12 +21,14 @@ namespace Libreria.Dominio
         {
             Auto = a;
             Cantidad = cant;
+            AutoP = null;
         }
 
         public DetalleFactura(Autoparte ap, int cant)
         {
             AutoP = ap;
             Cantidad = cant;
+            Auto = null;
         }
 
         public double CalcularSubTotal()

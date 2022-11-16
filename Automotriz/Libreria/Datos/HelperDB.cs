@@ -15,7 +15,7 @@ namespace Libreria.Datos
 
         public HelperDB()
         {
-            cnn = new SqlConnection(Properties.Resources.ConexionString2);
+            cnn = new SqlConnection(Properties.Resources.ConexionString1);
         }
 
         public int Login(string usario, string pass)
@@ -190,6 +190,76 @@ namespace Libreria.Datos
                 lst.Add(aux);
             }
             return lst;
+        }
+
+        public bool InsertarMD(Factura oFactura)
+        {
+            bool aux = false;
+            SqlTransaction t = null;
+            try
+            {
+                cnn.Open();
+                t = cnn.BeginTransaction();
+
+                //configuro cmd para insertar Maestro
+                SqlCommand cmdMaestro = new SqlCommand("SP_INSERTAR_FACTURA", cnn, t);
+                cmdMaestro.CommandType = CommandType.StoredProcedure;
+
+                //parametros de entrada
+                cmdMaestro.Parameters.AddWithValue("@cod_empleado", oFactura.CodEmpleado);
+                cmdMaestro.Parameters.AddWithValue("@nom_cliente", oFactura.NomCliente);
+                cmdMaestro.Parameters.AddWithValue("@cuit", oFactura.Cuit);
+                cmdMaestro.Parameters.AddWithValue("@cod_plan", oFactura.CodPlan);
+                cmdMaestro.Parameters.AddWithValue("@cod_tipo_cliente", oFactura.CodTipoCliente);
+
+                //configuro param de salida para recibir el id del maestro
+                SqlParameter paramSalida = new SqlParameter();
+                paramSalida.ParameterName = "@cod_factura";
+                paramSalida.DbType = DbType.Int32;
+                paramSalida.Direction = ParameterDirection.Output;
+
+                cmdMaestro.Parameters.Add(paramSalida);
+
+                //ejecuto cmdMaestro y guardo el identity
+                cmdMaestro.ExecuteNonQuery();
+                int idMaestro = (int)paramSalida.Value;
+
+                //para ingresar cada detalle del maestro
+                SqlCommand cmdDetalle = null;
+                foreach (DetalleFactura det in oFactura.Detalles)
+                {
+                    //configuro cmd para insertar el detalle
+                    cmdDetalle = new SqlCommand("SP_INSERTAR_DETALLE", cnn, t);
+                    cmdDetalle.CommandType = CommandType.StoredProcedure;
+
+                    //parametros de entrada
+                    cmdDetalle.Parameters.AddWithValue("@cod_factura", idMaestro);
+                    cmdDetalle.Parameters.AddWithValue("@patente", det.Auto.Patente);
+                    //cmdDetalle.Parameters.AddWithValue("@nro_serie", det.AutoP.NroSerie);
+                    cmdDetalle.Parameters.AddWithValue("@cantidad", det.Cantidad);
+                    cmdDetalle.Parameters.AddWithValue("@precio", det.Precio);
+                    cmdDetalle.ExecuteNonQuery();
+                }
+
+                t.Commit();
+                aux = true;
+            }
+            catch (Exception e)
+            {
+                if (t != null)//si "t" no es null es porq hubo en error
+                {
+                    t.Rollback();
+                }
+            }
+            finally
+            {
+                if (cnn != null && cnn.State == ConnectionState.Open)//si la conex existe y esta abierta
+                {
+                    cnn.Close();
+                }
+            }
+
+            return aux;
         }
     }
 }

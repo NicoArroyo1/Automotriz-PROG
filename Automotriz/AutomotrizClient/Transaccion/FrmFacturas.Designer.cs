@@ -34,6 +34,9 @@ namespace AutomotrizClient
             this.txtFecha = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.dgvDetalles1 = new System.Windows.Forms.DataGridView();
+            this.colProd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colPrecio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cboProductos = new System.Windows.Forms.ComboBox();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.txtCantidad = new System.Windows.Forms.TextBox();
@@ -59,9 +62,6 @@ namespace AutomotrizClient
             this.txtPrecio = new System.Windows.Forms.TextBox();
             this.lblProducto = new System.Windows.Forms.Label();
             this.cboClientes = new System.Windows.Forms.ComboBox();
-            this.colProd = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colPrecio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetalles1)).BeginInit();
             this.gbCargaProducto.SuspendLayout();
             this.SuspendLayout();
@@ -129,6 +129,25 @@ namespace AutomotrizClient
             this.dgvDetalles1.Size = new System.Drawing.Size(762, 178);
             this.dgvDetalles1.TabIndex = 9;
             this.dgvDetalles1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDetalles_CellContentClick_1);
+            // 
+            // colProd
+            // 
+            this.colProd.HeaderText = "Producto";
+            this.colProd.Name = "colProd";
+            this.colProd.ReadOnly = true;
+            this.colProd.Width = 220;
+            // 
+            // colCantidad
+            // 
+            this.colCantidad.HeaderText = "Cantidad";
+            this.colCantidad.Name = "colCantidad";
+            this.colCantidad.ReadOnly = true;
+            // 
+            // colPrecio
+            // 
+            this.colPrecio.HeaderText = "Precio";
+            this.colPrecio.Name = "colPrecio";
+            this.colPrecio.ReadOnly = true;
             // 
             // cboProductos
             // 
@@ -228,6 +247,7 @@ namespace AutomotrizClient
             // cboPlan
             // 
             this.cboPlan.BackColor = System.Drawing.Color.White;
+            this.cboPlan.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboPlan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cboPlan.FormattingEnabled = true;
             this.cboPlan.Location = new System.Drawing.Point(142, 198);
@@ -251,6 +271,7 @@ namespace AutomotrizClient
             // cboEmpleado
             // 
             this.cboEmpleado.BackColor = System.Drawing.Color.White;
+            this.cboEmpleado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboEmpleado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cboEmpleado.FormattingEnabled = true;
             this.cboEmpleado.Location = new System.Drawing.Point(142, 117);
@@ -416,25 +437,6 @@ namespace AutomotrizClient
             this.cboClientes.Name = "cboClientes";
             this.cboClientes.Size = new System.Drawing.Size(184, 23);
             this.cboClientes.TabIndex = 9;
-            // 
-            // colProd
-            // 
-            this.colProd.HeaderText = "Producto";
-            this.colProd.Name = "colProd";
-            this.colProd.ReadOnly = true;
-            this.colProd.Width = 220;
-            // 
-            // colCantidad
-            // 
-            this.colCantidad.HeaderText = "Cantidad";
-            this.colCantidad.Name = "colCantidad";
-            this.colCantidad.ReadOnly = true;
-            // 
-            // colPrecio
-            // 
-            this.colPrecio.HeaderText = "Precio";
-            this.colPrecio.Name = "colPrecio";
-            this.colPrecio.ReadOnly = true;
             // 
             // FrmFacturas
             // 

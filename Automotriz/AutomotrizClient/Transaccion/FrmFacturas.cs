@@ -164,6 +164,7 @@ namespace AutomotrizClient
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
+            #region VALIDACIONES
             if (cboProductos.Text.Equals(String.Empty))
             {
                 MessageBox.Show("Debe seleccionar un PRODUCTO!", "Control", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -184,6 +185,7 @@ namespace AutomotrizClient
                     return;
                 }
             }
+            #endregion
 
             DetalleFactura det;
             DataGridViewRow fila = new DataGridViewRow();
@@ -218,34 +220,29 @@ namespace AutomotrizClient
         }
 
 
-        private void GuardarFactura()
-        {/*
-            nuevo.Cliente = cboClientes.SelectedIndex + 1;
-            nuevo.Plan = cbxPlan.SelectedIndex + 1;
-            nuevo.Empleado = cbxEmpleado.SelectedIndex + 1;
+        private async Task GuardarFacturaAsync()
+        {
+            //datos de la factura
+            oFactura.CodEmpleado = cboEmpleado.SelectedIndex + 1;
+            oFactura.NomCliente = cboClientes.SelectedValue.ToString();
+            oFactura.CodPlan = cboPlan.SelectedIndex + 1;
+            oFactura.CodTipoCliente = 1;
 
-            if (helper.ConfirmarFactura(nuevo))
+
+            string bodyContent = JsonConvert.SerializeObject(oFactura);
+
+            string url = "http://localhost:5046/facturas";
+            var res = await ClientSingleton.GetInstance().PostAsync(url, bodyContent);
+
+            if (res.Equals("true"))
             {
-                MessageBox.Show("Factura Cargada!", "Informe", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            } else
-            {
-                MessageBox.Show("ERROR. No se pudo cargar la factura!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Factura registrada", "Informe", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Dispose();
             }
-
-            cboClientes.SelectedIndex = -1;
-            cbxEmpleado.SelectedIndex = -1;
-            cbxPlan.SelectedIndex = -1;
-            cboTipoProducto.Text = "Seleccione el Tipo de Producto";
-            cboProductos.Text = "Seleccione el Producto";
-            lblPlan.Select();
-            cboProductos.Enabled = false;
-            dgvDetalles.Rows.Clear();
-
-            for (int i = 0; i < nuevo.Detalles.Count; i++)
+            else
             {
-                nuevo.QuitarDetalle(0);
+                MessageBox.Show("No se pudo registrar la factura", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-         */
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
@@ -266,7 +263,7 @@ namespace AutomotrizClient
                 return;
             }
 
-            GuardarFactura();
+            GuardarFacturaAsync();
         }
 
         private void CalcularTotal()

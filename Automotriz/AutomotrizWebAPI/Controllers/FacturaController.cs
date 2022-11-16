@@ -76,5 +76,21 @@ namespace AutomotrizWebAPI.Controllers
             }
         }
 
+        [HttpPost("/facturas")]
+        public IActionResult PostFacturas(Factura oFactura)
+        {
+            try
+            {
+                if(oFactura == null)
+                {
+                    return BadRequest("Datos incorrectos!");
+                }
+                return Ok(oConexion.InsertarMD(oFactura));
+            }
+            catch (Exception)
+            {
+                return StatusCode(500, "Error interno! Intente luego");
+            }
+        }
     }
 }

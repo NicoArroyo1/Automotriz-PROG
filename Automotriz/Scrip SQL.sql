@@ -108,9 +108,9 @@ pass varchar(50) not NULL,
 
 --------------------------- INSERT USUARIOS --------------------------------------------------
 insert into Usuarios values  ('Analia', 'AnaliaRomulo', 'Ana123'),
-							('Mariano', 'MarianoRojas', 'Mar456'),
-							('Diego', 'admi','9876'),
-							('Nico', 'admin','admin')
+							 ('Mariano', 'MarianoRojas', 'Mar456'),
+							 ('Diego', 'admi','9876'),
+							 ('Nico', 'admin','admin')
 
 --------------------------- INSERT TIPOS_CLIENTES ---------------------------------------------
 insert into Tipos_cliente (descripcion)
@@ -276,67 +276,21 @@ as
 begin
 	select legajo, nombre from Empleados
 end
-/*
 
---SP CONSULTAR CLIENTES
-
-CREATE PROCEDURE SP_CONSULTAR_CLIENTES
-AS
-BEGIN
-	SELECT cuit 'CUIL/CUIT', nom_cliente 'CLIENTE' FROM Facturas
-END
-
---SP CONSULTAR PLANES
-
-CREATE PROC SP_CONSULTAR_PLANES
-as
-begin
-select * from Autoplanes
-end
-
---SP CONSULTAR EMPLEADOS
-
-CREATE PROC SP_CONSULTAR_EMPLEADOS
-AS
-BEGIN
-SELECT cod_empleado, nombre + ' ' + apellido empleado from Empleados e join Personas p on p.cod_persona = e.cod_persona
-END
-
---SP CONSULTAR TIPOS DE PRODUCTOS
-
-create proc sp_consultar_tiposprod
-as
-begin
-select * from Tipos_productos
-end
-
---SP CONSULTAR AUTOMOVILES
-
-create proc sp_consultar_autopartes
-as
-begin
-select * from Productos where cod_tipo_producto = 1
-end
-
---SP CONSULTAR AUTOPARTES
-
-create proc sp_consultar_automoviles
-as
-begin
-select * from Productos where cod_tipo_producto = 2
-end
 
 --SP INSERTAR FACTURA
 
 CREATE PROCEDURE SP_INSERTAR_FACTURA
-	@cod_cliente int,
-	@cod_plan int = null,
 	@cod_empleado int,
+	@nom_cliente varchar(50),
+	@cuit bigint = null,
+	@cod_plan int = null,
+	@cod_tipo_cliente int = null,
 	@cod_factura int OUTPUT
 AS
 BEGIN
-	INSERT INTO Facturas(fecha, cod_cliente, cod_plan, cod_empleado)
-    VALUES (GETDATE(), @cod_cliente, @cod_plan, @cod_empleado);
+	INSERT INTO Facturas(cod_empleado, fecha, nom_cliente, cuit, cod_plan, cod_tipo_cliente)
+    VALUES (@cod_empleado, GETDATE(), @nom_cliente, @cuit, @cod_plan, @cod_tipo_cliente);
     --Asignamos el valor del último ID autogenerado (obtenido --  
     --mediante la función SCOPE_IDENTITY() de SQLServer)	
     SET @cod_factura = SCOPE_IDENTITY();
@@ -346,12 +300,12 @@ END
 
 CREATE PROC SP_INSERTAR_DETALLE
 	@cod_factura int,
+	@patente int = null,
+	@nro_serie int = null,
 	@cantidad int,
-	@precio money,
-	@cod_producto int
+	@precio money
 as
 begin
-	INSERT INTO Detalles_factura (cod_factura, cantidad, precio, cod_producto)
-	VALUES (@cod_factura, @cantidad, @precio, @cod_producto)
+	INSERT INTO Detalles_factura (cod_factura, patente, nro_serie, cantidad,precio)
+	VALUES (@cod_factura,@patente,@nro_serie, @cantidad, @precio)
 end
-*/
