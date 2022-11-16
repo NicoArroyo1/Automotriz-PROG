@@ -31,7 +31,7 @@ namespace AutomotrizWebAPI.Controllers
             }
         }
 
-        
+
         [HttpGet("/tipos_vehiculos")]
         public IActionResult GetTiposVehiculos()
         {
@@ -47,10 +47,40 @@ namespace AutomotrizWebAPI.Controllers
             }
         }
 
+        //[HttpGet("/autopartes")]
+        //public IActionResult GetAutopartes()
+        //{
+        //    List<Autoparte> lst = null;
+        //    try
+        //    {
+        //        lst = oConexion.ObtenerAutopartes();
+        //        return Ok(lst);
+        //    }
+        //    catch (Exception)
+        //    {
+        //        return StatusCode(500, "Error interno! Intente luego");
+        //    }
+        //}
+
+        //[HttpGet("/automoviles")]//no los borre por las dudas
+        //public IActionResult GetAutomoviles()
+        //{
+        //    List<Automovil> lst = null;
+        //    try
+        //    {
+        //        lst = oConexion.ObtenerAutomoviles();
+        //        return Ok(lst);
+        //    }
+        //    catch (Exception)
+        //    {
+        //        return StatusCode(500, "Error interno! Intente luego");
+        //    }
+        //}
+
         [HttpGet("/autopartes")]
-        public IActionResult GetAutopartes()
+        public IActionResult GetProductos() 
         {
-            List<Autoparte> lst = null;
+            List<Producto> lst = null;
             try
             {
                 lst = oConexion.ObtenerAutopartes();
@@ -61,11 +91,11 @@ namespace AutomotrizWebAPI.Controllers
                 return StatusCode(500, "Error interno! Intente luego");
             }
         }
-        
+
         [HttpGet("/automoviles")]
         public IActionResult GetAutomoviles()
         {
-            List<Automovil> lst = null;
+            List<Producto> lst = null;
             try
             {
                 lst = oConexion.ObtenerAutomoviles();

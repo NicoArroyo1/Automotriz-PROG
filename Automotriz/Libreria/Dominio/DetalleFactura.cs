@@ -4,12 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace Libreria.Dominio
 {
     public class DetalleFactura
     {
-        public Automovil? Auto { get; set; }
-        public Autoparte? AutoP { get; set; }
+        
+        //aca del codigo no toque nada pero imagino que deberia de agregar un Cod_producto
+        //public Automovil? Auto { get; set; }
+        //public Autoparte? AutoP { get; set; }
+        public Producto producto { get; set; }
         public int Cantidad { get; set; }
         public double Precio { get; set; }
 
@@ -17,30 +21,40 @@ namespace Libreria.Dominio
         {
 
         }
-        public DetalleFactura(Automovil a, int cant)
+        //public DetalleFactura(Automovil a, int cant)
+        //{
+        //    Auto = a;
+        //    Cantidad = cant;
+        //    AutoP = null;
+        //}
+
+        //public DetalleFactura(Autoparte ap, int cant)
+        //{
+        //    AutoP = ap;
+        //    Cantidad = cant;
+        //    Auto = null;
+        //}
+        public DetalleFactura(Producto p, int cant) 
         {
-            Auto = a;
-            Cantidad = cant;
-            AutoP = null;
+            producto = p;
+            Cantidad= cant;
         }
 
-        public DetalleFactura(Autoparte ap, int cant)
-        {
-            AutoP = ap;
-            Cantidad = cant;
-            Auto = null;
-        }
+        //public double CalcularSubTotal()
+        //{
+        //    if (AutoP is null)
+        //    {
+        //        return Auto.Precio * Cantidad;
+        //    }
+        //    else
+        //    {
+        //        return AutoP.Precio * Cantidad;
+        //    }
+        //}
 
-        public double CalcularSubTotal()
+        public double CalcularSubTotal() 
         {
-            if (AutoP is null)
-            {
-                return Auto.Precio * Cantidad;
-            }
-            else
-            {
-                return AutoP.Precio * Cantidad;
-            }
+            return producto.Precio * Cantidad;
         }
     }
 }

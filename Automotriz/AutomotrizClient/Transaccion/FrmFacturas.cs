@@ -89,7 +89,8 @@ namespace AutomotrizClient
             var res = await ClientSingleton.GetInstance().GetAsync(url);
             var lst = JsonConvert.DeserializeObject<List<Autoparte>>(res);
             cboProductos.DataSource = lst;
-            cboProductos.ValueMember = "NroSerie";
+            //cboProductos.ValueMember = "NroSerie";
+            cboProductos.ValueMember = "CodProducto";
             cboProductos.DisplayMember = "Nombre";
         }
 
@@ -99,7 +100,8 @@ namespace AutomotrizClient
             var res = await ClientSingleton.GetInstance().GetAsync(url);
             var lst = JsonConvert.DeserializeObject<List<Automovil>>(res);
             cboProductos.DataSource = lst;
-            cboProductos.ValueMember = "Patente";
+            //cboProductos.ValueMember = "Patente";
+            cboProductos.ValueMember = "CodProducto";
             cboProductos.DisplayMember = "Patente";
         }
 
@@ -191,23 +193,37 @@ namespace AutomotrizClient
             DataGridViewRow fila = new DataGridViewRow();
             fila.CreateCells(dgvDetalles1);
 
-            if (rbAutomovil.Checked)
+            if (rbAutomovil.Checked) //aca lo mismo que dije en DetallesFacturas, imagino que deberia de cambiar los campos de Patente y NroSerie por Cod_Producto.
             {
+                //det = new DetalleFactura();
+                //det.Auto = new Automovil();
+                //det.Auto.Patente = (int)cboProductos.SelectedValue;
+                //det.Cantidad = Convert.ToInt32(txtCantidad.Text);
+
+                //fila.Cells[0].Value = det.Auto.Patente.ToString();
+
                 det = new DetalleFactura();
-                det.Auto = new Automovil();
-                det.Auto.Patente = (int)cboProductos.SelectedValue;
+                det.producto= new Producto();
+                det.producto.CodProducto = (int)cboProductos.SelectedValue;
                 det.Cantidad = Convert.ToInt32(txtCantidad.Text);
 
-                fila.Cells[0].Value = det.Auto.Patente.ToString();
+                fila.Cells[0].Value = det.producto.CodProducto.ToString();
             }
             else
             {
-                det = new DetalleFactura();
-                det.AutoP = new Autoparte();
-                det.AutoP.NroSerie = (int)cboProductos.SelectedValue;
-                det.Cantidad = Convert.ToInt32(txtCantidad.Text);
+                //det = new DetalleFactura();
+                //det.AutoP = new Autoparte();
+                //det.AutoP.NroSerie = (int)cboProductos.SelectedValue;
+                //det.Cantidad = Convert.ToInt32(txtCantidad.Text);
 
-                fila.Cells[0].Value = det.AutoP.NroSerie.ToString();
+                //fila.Cells[0].Value = det.AutoP.NroSerie.ToString();
+
+                det = new DetalleFactura();
+                det.producto = new Producto();
+                det.producto.CodProducto = (int)cboProductos.SelectedValue;//creo que seria mejor eliminar este combo box por que esta quedando al pedo
+                det.Cantidad = Convert.ToInt32(txtCantidad.Text);//aunque voy dormido son las 5 de la mañana...
+
+                fila.Cells[0].Value = det.producto.CodProducto.ToString();
             }
 
             det.Precio = Convert.ToDouble(txtPrecio.Text);

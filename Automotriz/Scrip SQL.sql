@@ -30,26 +30,52 @@ descripcion varchar(20) NULL,
 CONSTRAINT pk_tipos_vehiculos PRIMARY KEY (cod_tipo_vehiculo)
 )
 
-create table Automoviles(
-patente int identity(1000, 1),
+--create table Automoviles(
+--patente int identity(1000, 1),
+--cod_modelo int,
+--cod_tipo_vehiculo int,
+--color varchar(15),
+--precio money,
+--fec_fabricacion date,
+--constraint pk_automoviles primary key (patente),
+--constraint fk_modelos foreign key (cod_modelo)
+--	references Modelos (cod_modelo),
+--constraint fk_tipos_vehiculo foreign key (cod_tipo_vehiculo)
+--	references Tipos_vehiculo (cod_tipo_vehiculo)
+--)
+
+--create table Autopartes(
+--nro_serie int identity(1,1),
+--autoparte varchar(50),
+--precio money,
+--fec_fabricacion date,
+--constraint pk_autopartes primary key (nro_serie)
+--)
+-------------------------- CREATE TIPOS_PRODUCTOS ----------------------------------------------
+
+create table Tipos_producto(
+cod_tipo_producto int identity(1,1),
+descripcion varchar(75),
+constraint pk_tipos_producto primary key(cod_tipo_producto)
+)
+-------------------------- CREATE PRODUCTOS ----------------------------------------------
+
+create table Productos
+(
+cod_producto int identity(1,1),
+cod_tipo_producto int,
 cod_modelo int,
 cod_tipo_vehiculo int,
 color varchar(15),
 precio money,
 fec_fabricacion date,
-constraint pk_automoviles primary key (patente),
+constraint pk_producto primary key (cod_producto),
 constraint fk_modelos foreign key (cod_modelo)
 	references Modelos (cod_modelo),
 constraint fk_tipos_vehiculo foreign key (cod_tipo_vehiculo)
-	references Tipos_vehiculo (cod_tipo_vehiculo)
-)
-
-create table Autopartes(
-nro_serie int identity(1,1),
-autoparte varchar(50),
-precio money,
-fec_fabricacion date,
-constraint pk_autopartes primary key (nro_serie)
+	references Tipos_vehiculo (cod_tipo_vehiculo),
+constraint fk_tipos_productro foreign key (cod_tipo_producto)
+	references Tipos_producto (cod_tipo_producto)
 )
 
 create table Autoplanes(
@@ -86,17 +112,15 @@ constraint fk_empleados_factura foreign key (cod_empleado)
 create table Detalles_factura(
 cod_det_factura int identity(1,1),
 cod_factura int,
-patente int,
-nro_serie int,
+cod_producto int,
 cantidad int,
 precio money,
 constraint pk_detalles_facturas primary key (cod_det_factura),
 constraint fk_facturas foreign key (cod_factura)
 	references Facturas (cod_factura),
-constraint fk_patente foreign key (patente)
-	references Automoviles (patente),
-constraint fk_nro_serie foreign key (nro_serie)
-	references Autopartes (nro_serie)
+constraint fk_cod_producto foreign key (cod_producto)
+	references Productos (cod_producto),
+
 )
 
 CREATE TABLE Usuarios(
@@ -160,29 +184,54 @@ insert into Tipos_vehiculo (descripcion)
 						   ('Van'),
 						   ('Hatchback')
 
--------------------------- INSERT AUTOPARTES ------------------------------------------------
-set dateformat ymd
+---------------------------- INSERT AUTOPARTES ------------------------------------------------
+--set dateformat ymd
 
-insert into Autopartes (autoparte,precio,fec_fabricacion)
-				values	('Correa de distribucion',	19129	,'2022-02-15'),
-						('Disco de frenos',	17861	,'2022-01-26'),
-						('Amortiguadores',	17745	,'2022-08-12'),
-						('Lamparas',	11986	,'2022-12-15'),
-						('Bateria',	10862	,'2022-12-23'),
-						('Bujias',	15332	,'2022-07-27'),
-						('Inyector',	9327	,'2022-12-18'),
-						('Limpiaparabrisas',	10872	,'2022-04-07'),
-						('Cubiertas',	19313	,'2021-12-13'),
-						('Burro de arranque',	16654	,'2022-09-04')
+--insert into Autopartes (autoparte,precio,fec_fabricacion)
+--				values	('Correa de distribucion',	19129	,'2022-02-15'),
+--						('Disco de frenos',	17861	,'2022-01-26'),
+--						('Amortiguadores',	17745	,'2022-08-12'),
+--						('Lamparas',	11986	,'2022-12-15'),
+--						('Bateria',	10862	,'2022-12-23'),
+--						('Bujias',	15332	,'2022-07-27'),
+--						('Inyector',	9327	,'2022-12-18'),
+--						('Limpiaparabrisas',	10872	,'2022-04-07'),
+--						('Cubiertas',	19313	,'2021-12-13'),
+--						('Burro de arranque',	16654	,'2022-09-04')
+
+
+-------------------------- INSERT TIPOS_PRODUCTOS ----------------------------------------------
+insert into Tipos_producto(descripcion)
+                    values ('Autos'),
+						   ('Autopartes')
+
+-------------------------- INSERT PRODUCTOS ----------------------------------------------------
+insert into Productos(cod_tipo_producto, cod_modelo, cod_tipo_vehiculo, color, precio, fec_fabricacion)
+			values (1, 5, 1,'blanco', 4934137, '2022-04-30'),
+				   (1, 1, 2,'rojo',	4534165,'2022-08-12'),
+				   (1, 7, 1,'negro', 4804518, '2022-10-11'),
+				   (1, 5, 7,'azul',	4408912, '2022-05-16'),
+				   (1, 2, 6,'blanco', 4173716, '2022-11-30'),
+				   (1, 7, 1,'gris',	4296281, '2022-07-26'),
+				   (2, 2, 3, 'generico', 19129,	'2022-02-15'),
+				   (2, 3, 4, 'generico', 17861,	'2022-01-26'),
+				   (2, 5, 1, 'generico', 17745,	'2022-08-12'),
+				   (2, 7, 5, 'generico', 10862,	'2022-12-15'),
+				   (2, 1, 4, 'generico', 15332,	'2022-12-23'),
+				   (2, 6, 5, 'generico', 9327,	'2022-07-27'),
+				   (2, 3, 2, 'generico', 10872,	'2022-12-18'),
+				   (2, 4, 1, 'generico', 19313,	'2022-04-07'),
+				   (2, 5, 7, 'generico', 16654,	'2021-12-13'),
+				   (2, 4, 6, 'generico', 11986,	'2022-09-04')
 
 -------------------------- INSERT AUTOMOVILES -----------------------------------------------
-insert into Automoviles (cod_modelo,cod_tipo_vehiculo,color,precio,fec_fabricacion)
-				values (	5	,	1	,'blanco',	4934137	,'2022-04-30'),
-					   (	1	,	2	,'rojo',	4534165	,'2022-08-12'),
-					   (	7	,	1	,'negro',	4804518	,'2022-10-11'),
-					   (	5	,	7	,'azul',	4408912	,'2022-05-16'),
-					   (	2	,	6	,'blanco',	4173716	,'2022-11-30'),
-					   (	7	,	1	,'gris',	4296281	,'2022-07-26')
+--insert into Automoviles (cod_modelo,cod_tipo_vehiculo,color,precio,fec_fabricacion)
+--				values (	5	,	1	,'blanco',	4934137	,'2022-04-30'),
+--					   (	1	,	2	,'rojo',	4534165	,'2022-08-12'),
+--					   (	7	,	1	,'negro',	4804518	,'2022-10-11'),
+--					   (	5	,	7	,'azul',	4408912	,'2022-05-16'),
+--					   (	2	,	6	,'blanco',	4173716	,'2022-11-30'),
+--					   (	7	,	1	,'gris',	4296281	,'2022-07-26')
 
 -------------------------- INSERT FACTURAS --------------------------------------------------
 insert into Facturas (cod_empleado,fecha,nom_cliente,cuit       ,  cod_plan,cod_tipo_cliente)
@@ -196,21 +245,36 @@ insert into Facturas (cod_empleado,fecha,nom_cliente,cuit       ,  cod_plan,cod_
 					(	2	,'2022-12-24','Alfredo Villalba',21784166754	,	null	,	1	)
 
 -------------------------- INSERT DETALLES FACTURA ------------------------------------------
-insert into Detalles_factura (cod_factura,patente ,nro_serie,cantidad,precio)
-					  values (	1		,	1004  ,	null	,	1	,	4160072	),
-							(	2		,	1000  ,	null	,	1	,	4684958	),
-							(	3		,	1004  ,	null	,	1	,	4333919	),
-							(	4		,	1004  ,	null	,	1	,	4980734	),
-							(	7		,	null  ,	9		,	1	,	17046	),
-							(	8		,	null  ,	4		,	2	,	18951	),
-							(	5		,	null  ,	3		,	3	,	16407	),
-							(	8		,	null  ,	10		,	3	,	7732	),
-							(	7		,	null  ,	2		,	3	,	13195	),
-							(	6		,	null  ,	1		,	2	,	18614	),
-							(	6		,	null  ,	5		,	3	,	12737	),
-							(	5		,	null  ,	6		,	3	,	15291	),
-							(	7		,	null  ,	7		,	3	,	13666	),
-							(	6		,	null  ,	8		,	2	,	9944	)
+--insert into Detalles_factura (cod_factura,patente ,nro_serie,cantidad,precio)
+--					  values (	1		,	1004  ,	null	,	1	,	4160072	),
+--							(	2		,	1000  ,	null	,	1	,	4684958	),
+--							(	3		,	1004  ,	null	,	1	,	4333919	),
+--							(	4		,	1004  ,	null	,	1	,	4980734	),
+--							(	7		,	null  ,	9		,	1	,	17046	),
+--							(	8		,	null  ,	4		,	2	,	18951	),
+--							(	5		,	null  ,	3		,	3	,	16407	),
+--							(	8		,	null  ,	10		,	3	,	7732	),
+--							(	7		,	null  ,	2		,	3	,	13195	),
+--							(	6		,	null  ,	1		,	2	,	18614	),
+--							(	6		,	null  ,	5		,	3	,	12737	),
+--							(	5		,	null  ,	6		,	3	,	15291	),
+--							(	7		,	null  ,	7		,	3	,	13666	),
+--							(	6		,	null  ,	8		,	2	,	9944	)
+insert into Detalles_factura (cod_factura,cod_producto,cantidad,precio)
+					  values(1,	1, 1, 4160072),
+							(2,	2,	1,	4684958),
+							(3,	5,	1,	4333919),
+							(4,	6,	1,	4980734),
+							(7,	4,	1,	17046),
+							(8,	9,	2,	18951),
+							(5,	10,	3,	11407),
+							(8,	15,	3,	16754),
+							(7,	14,	3,	20195),
+							(6,	11,	2,	16614),
+							(6,	7,	3,	21737),
+							(5,	16,	3,	12291),
+							(7,	8,	3, 18666),
+							(6,	12,	2, 9944)
 
 
 ----------------------------------------------------------------------------------------------------------------------------------------
@@ -231,7 +295,9 @@ end
 create procedure pa_autopartes
 as
 begin
-	select nro_serie, autoparte from Autopartes
+	select cod_producto, tp.descripcion from Productos p
+	join Tipos_producto tp on tp.cod_tipo_producto=p.cod_tipo_producto
+	where tp.cod_tipo_producto=2
 end
 
 create procedure pa_autoplanes
@@ -243,10 +309,12 @@ end
 create procedure pa_automoviles
 as
 begin
-	select patente, m.modelo +' - '+ convert(varchar, patente) 'automovil'
-	from Automoviles a
-	join Tipos_vehiculo t on t.cod_tipo_vehiculo = a.cod_tipo_vehiculo
-	join Modelos m on m.cod_modelo = a.cod_modelo
+	select cod_producto, m.modelo +' - '+ t.descripcion  'automovil'
+	from Productos p
+	join Tipos_vehiculo t on t.cod_tipo_vehiculo = p.cod_tipo_vehiculo
+	join Modelos m on m.cod_modelo = p.cod_modelo
+	join Tipos_producto tp on tp.cod_tipo_producto=p.cod_tipo_producto
+	where tp.cod_tipo_producto=1
 end
 
 create procedure pa_clientes
@@ -300,12 +368,11 @@ END
 
 CREATE PROC SP_INSERTAR_DETALLE
 	@cod_factura int,
-	@patente int = null,
-	@nro_serie int = null,
+	@cod_producto int,
 	@cantidad int,
 	@precio money
 as
 begin
-	INSERT INTO Detalles_factura (cod_factura, patente, nro_serie, cantidad,precio)
-	VALUES (@cod_factura,@patente,@nro_serie, @cantidad, @precio)
+	INSERT INTO Detalles_factura (cod_factura, cod_producto, cantidad,precio)
+	VALUES (@cod_factura,@cod_producto, @cantidad, @precio)
 end

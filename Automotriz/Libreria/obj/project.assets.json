@@ -470,19 +470,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\nicoo\\.nuget\\packages\\": {}
+    "C:\\Users\\diego\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Biblioteca\\Escritorio\\GitHub\\Automotriz-PROG\\Automotriz\\Libreria\\Libreria.csproj",
+      "projectUniqueName": "D:\\GitHub\\Documents\\GitHub\\Automotriz-PROG\\Automotriz\\Libreria\\Libreria.csproj",
       "projectName": "Libreria",
-      "projectPath": "E:\\Biblioteca\\Escritorio\\GitHub\\Automotriz-PROG\\Automotriz\\Libreria\\Libreria.csproj",
-      "packagesPath": "C:\\Users\\nicoo\\.nuget\\packages\\",
-      "outputPath": "E:\\Biblioteca\\Escritorio\\GitHub\\Automotriz-PROG\\Automotriz\\Libreria\\obj\\",
+      "projectPath": "D:\\GitHub\\Documents\\GitHub\\Automotriz-PROG\\Automotriz\\Libreria\\Libreria.csproj",
+      "packagesPath": "C:\\Users\\diego\\.nuget\\packages\\",
+      "outputPath": "D:\\GitHub\\Documents\\GitHub\\Automotriz-PROG\\Automotriz\\Libreria\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\nicoo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\diego\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -529,7 +529,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

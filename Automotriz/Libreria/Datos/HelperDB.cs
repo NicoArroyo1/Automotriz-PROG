@@ -96,17 +96,33 @@ namespace Libreria.Datos
             return lst;
         }
 
-        public List<Autoparte> ObtenerAutopartes()
+        //public List<Autoparte> ObtenerAutopartes()
+        //{
+        //    List<Autoparte> lst = new List<Autoparte>();
+
+        //    DataTable t = EjecutarSP("pa_autopartes");
+
+        //    foreach (DataRow dr in t.Rows)
+        //    {
+        //        Autoparte aux = new Autoparte();
+        //        aux.NroSerie = int.Parse(dr["nro_serie"].ToString());
+        //        aux.Nombre = dr["autoparte"].ToString();
+        //        lst.Add(aux);
+        //    }
+
+        //    return lst;
+        //}
+        public List<Producto> ObtenerAutopartes()
         {
-            List<Autoparte> lst = new List<Autoparte>();
+            List<Producto> lst = new List<Producto>();
 
             DataTable t = EjecutarSP("pa_autopartes");
 
             foreach (DataRow dr in t.Rows)
             {
-                Autoparte aux = new Autoparte();
-                aux.NroSerie = int.Parse(dr["nro_serie"].ToString());
-                aux.Nombre = dr["autoparte"].ToString();
+                Producto aux = new Producto();
+                aux.CodProducto = int.Parse(dr["CodProducto"].ToString());
+                aux.Descripcion = dr["autoparte"].ToString();
                 lst.Add(aux);
             }
 
@@ -147,20 +163,37 @@ namespace Libreria.Datos
             return lst;
         }
         
-        public List<Automovil> ObtenerAutomoviles()
+        //public List<Automovil> ObtenerAutomoviles() //no quiero tocarlo por las dudas
+        //{
+        //    List<Automovil> lst = new List<Automovil>();
+        //    DataTable dt = EjecutarSP("pa_automoviles");
+
+        //    foreach (DataRow fila in dt.Rows)
+        //    {
+        //        Automovil aux = new Automovil();
+        //        aux.Patente = int.Parse(fila["patente"].ToString());
+        //        aux.Descripcion = fila["automovil"].ToString();
+        //        lst.Add(aux);
+        //    }
+        //    return lst;
+        //}
+
+        public List<Producto> ObtenerAutomoviles() //no quiero tocarlo por las dudas
         {
-            List<Automovil> lst = new List<Automovil>();
+            List<Producto> lst = new List<Producto>();
             DataTable dt = EjecutarSP("pa_automoviles");
 
             foreach (DataRow fila in dt.Rows)
             {
-                Automovil aux = new Automovil();
-                aux.Patente = int.Parse(fila["patente"].ToString());
+                Producto aux = new Producto();
+                aux.CodProducto = int.Parse(fila["CodProducto"].ToString());
                 aux.Descripcion = fila["automovil"].ToString();
                 lst.Add(aux);
             }
             return lst;
         }
+
+
 
         public List<Cliente> ObtenerClientes()
         {
@@ -234,7 +267,8 @@ namespace Libreria.Datos
 
                     //parametros de entrada
                     cmdDetalle.Parameters.AddWithValue("@cod_factura", idMaestro);
-                    cmdDetalle.Parameters.AddWithValue("@patente", det.Auto.Patente);
+                    cmdDetalle.Parameters.AddWithValue("@cod_producto",det.producto.CodProducto);
+                    //cmdDetalle.Parameters.AddWithValue("@patente", det.Auto.Patente);
                     //cmdDetalle.Parameters.AddWithValue("@nro_serie", det.AutoP.NroSerie);
                     cmdDetalle.Parameters.AddWithValue("@cantidad", det.Cantidad);
                     cmdDetalle.Parameters.AddWithValue("@precio", det.Precio);
